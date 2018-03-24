@@ -21,6 +21,7 @@
 		B3EB06472064D330000F68AE /* MSHThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB06462064D330000F68AE /* MSHThumbnail.m */; };
 		B3EB064A2064D6B5000F68AE /* MSHPageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB06492064D6B5000F68AE /* MSHPageInfo.m */; };
 		B3EB064D2065E522000F68AE /* MSHEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB064C2065E522000F68AE /* MSHEntity.m */; };
+		B3EB06502065E8EB000F68AE /* MSHBaseHeroService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB064F2065E8EB000F68AE /* MSHBaseHeroService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		B3EB06492064D6B5000F68AE /* MSHPageInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHPageInfo.m; sourceTree = "<group>"; };
 		B3EB064B2065E522000F68AE /* MSHEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHEntity.h; sourceTree = "<group>"; };
 		B3EB064C2065E522000F68AE /* MSHEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHEntity.m; sourceTree = "<group>"; };
+		B3EB064E2065E8EB000F68AE /* MSHBaseHeroService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHBaseHeroService.h; sourceTree = "<group>"; };
+		B3EB064F2065E8EB000F68AE /* MSHBaseHeroService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHBaseHeroService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 				B3EB0635206367E5000F68AE /* MSHHeroService.h */,
 				B3EB063C2063689E000F68AE /* MSHMarvelHeroService.h */,
 				B3EB063D2063689E000F68AE /* MSHMarvelHeroService.m */,
+				B3EB064E2065E8EB000F68AE /* MSHBaseHeroService.h */,
+				B3EB064F2065E8EB000F68AE /* MSHBaseHeroService.m */,
 			);
 			path = business;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3EB061D20633C91000F68AE /* ViewController.m in Sources */,
+				B3EB06502065E8EB000F68AE /* MSHBaseHeroService.m in Sources */,
 				B3EB063320633EEC000F68AE /* MSHHttpSessionManager.m in Sources */,
 				B3EB062820633C91000F68AE /* main.m in Sources */,
 				B3EB063B20636834000F68AE /* MSHHero.m in Sources */,

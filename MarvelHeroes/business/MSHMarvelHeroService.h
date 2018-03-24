@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MSHHeroService.h"
+#import "MSHBaseHeroService.h"
 
-@interface MSHMarvelHeroService : NSObject <MSHHeroService>
+@interface MSHMarvelHeroService : MSHBaseHeroService
 @end

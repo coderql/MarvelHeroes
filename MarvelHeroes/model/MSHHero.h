@@ -14,4 +14,5 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *desc;
 @property (nonatomic, strong) MSHThumbnail *thumbnail;
+@property BOOL isFavorite;
 @end

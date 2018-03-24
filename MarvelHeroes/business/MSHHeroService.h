@@ -36,4 +36,10 @@ typedef void (^MSHResultHandler)(id responseObject, NSError *error);
                  offset:(int)offset
                   limit:(int)limit
           resultHandler:(MSHResultHandler)handler;
+
+- (void)favor:(int)heroId;
+
+- (void)unfavor:(int)heroId;
+
+- (BOOL)isFavorite:(int)heroId;
 @end
