@@ -18,10 +18,14 @@
     
     // replace with loaded image.
     [[MSHImageManager manager] loadImageURL:url completion:^(NSData *data, NSError *error) {
-        UIImage *image = [UIImage imageWithData:data];
-        dispatch_async(dispatch_get_main_queue(), ^ {
-            [self setImage:image];
-        });
+        if (error != nil) {
+            // 
+        } else {
+            UIImage *image = [UIImage imageWithData:data];
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self setImage:image];
+            });
+        }
     }];
 }
 

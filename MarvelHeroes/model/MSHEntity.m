@@ -18,7 +18,7 @@
 }
 
 - (void)setNilValueForKey:(NSString *)key {
-    NSLog(@"key = %@", key);
+    MSHLog(@"key = %@", key);
 }
 
 @end

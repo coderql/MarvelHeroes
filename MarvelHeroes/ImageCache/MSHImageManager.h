@@ -18,10 +18,7 @@ typedef void(^ImageLoadCompletionBlock)(NSData * _Nullable data, NSError * _Null
  * Image manager handles image load process from memory, disk and network.
  */
 @interface MSHImageManager : NSObject
-@property (strong, nonatomic, readonly, nullable) MSHImageCache *imageCache;
-@property (strong, nonatomic, readonly, nullable) MSHImageDownloadManager *downloadManager;
-
-+ (nonnull instancetype)manager;
++ (nullable instancetype)manager;
 /**
  * load image.
  *

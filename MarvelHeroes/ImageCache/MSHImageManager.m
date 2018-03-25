@@ -7,9 +7,13 @@
 //
 
 #import "MSHImageManager.h"
+@interface MSHImageManager ()
+@property (strong, nonatomic, readonly, nullable) MSHImageCache *imageCache;
+@property (strong, nonatomic, readonly, nullable) MSHImageDownloadManager *downloadManager;
+@end
 
 @implementation MSHImageManager
-+ (nonnull instancetype)manager {
++ (nullable instancetype)manager {
     static dispatch_once_t once;
     static id instance;
     dispatch_once(&once, ^{
@@ -36,6 +40,7 @@
         __weak typeof(self) wself = self;
         // if image is not stored in local cache(both memory and disk), download from server side.
         [self.downloadManager downloadImageWithURL:url completed:^(NSData * _Nullable data, NSError * _Nullable error) {
+            // cache newly downloaded image data.
             [wself.imageCache storeImage:data key:key];
             completionBlock(data, error);
         }];

@@ -10,6 +10,7 @@
 #import "MSHImageDownloadManager.h"
 
 @interface MSHImageDownloadOperation : NSOperation
-- (instancetype)initWithRequest:(NSURLRequest *)request session:(NSURLSession *)session;
-- (void)addCompleteBlock:(ImageDownloadCompleteBlock)completeBlock;
+- (nullable instancetype)initWithRequest:(nonnull NSURLRequest *)request
+                                 session:(nonnull NSURLSession *)session;
+- (void)addCompleteBlock:(nonnull ImageDownloadCompleteBlock)completeBlock;
 @end

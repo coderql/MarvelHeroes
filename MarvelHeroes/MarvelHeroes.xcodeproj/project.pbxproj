@@ -165,6 +165,8 @@
 		7851C2F52066043B006C6655 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				B3EB063F2063F323000F68AE /* NSString+MD5.h */,
+				B3EB06402063F323000F68AE /* NSString+MD5.m */,
 				7851C2F62066047D006C6655 /* MSHMacros.h */,
 				7851C302206643F4006C6655 /* MSHUtils.h */,
 				7851C303206643F4006C6655 /* MSHUtils.m */,
@@ -178,12 +180,10 @@
 			isa = PBXGroup;
 			children = (
 				B3EB066720678917000F68AE /* database */,
-				B3EB06512065FB59000F68AE /* Image */,
+				B3EB06512065FB59000F68AE /* ImageCache */,
 				7851C2F52066043B006C6655 /* utils */,
 				7851C2E92065FDDE006C6655 /* views */,
 				7851C2E82065FB97006C6655 /* viewControllers */,
-				B3EB063F2063F323000F68AE /* NSString+MD5.h */,
-				B3EB06402063F323000F68AE /* NSString+MD5.m */,
 				B3EB063820636817000F68AE /* model */,
 				B3EB063420636792000F68AE /* business */,
 				B3EB063020633EBD000F68AE /* network */,
@@ -231,10 +231,10 @@
 			isa = PBXGroup;
 			children = (
 				B3EB0635206367E5000F68AE /* MSHHeroService.h */,
-				B3EB063C2063689E000F68AE /* MSHMarvelHeroService.h */,
-				B3EB063D2063689E000F68AE /* MSHMarvelHeroService.m */,
 				B3EB064E2065E8EB000F68AE /* MSHBaseHeroService.h */,
 				B3EB064F2065E8EB000F68AE /* MSHBaseHeroService.m */,
+				B3EB063C2063689E000F68AE /* MSHMarvelHeroService.h */,
+				B3EB063D2063689E000F68AE /* MSHMarvelHeroService.m */,
 			);
 			path = business;
 			sourceTree = "<group>";
@@ -256,7 +256,7 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		B3EB06512065FB59000F68AE /* Image */ = {
+		B3EB06512065FB59000F68AE /* ImageCache */ = {
 			isa = PBXGroup;
 			children = (
 				B3EB06522065FB7F000F68AE /* MSHImageCache.h */,
@@ -270,7 +270,7 @@
 				B3EB065E2066799F000F68AE /* UIImageView+MSHCache.h */,
 				B3EB065F2066799F000F68AE /* UIImageView+MSHCache.m */,
 			);
-			path = Image;
+			path = ImageCache;
 			sourceTree = "<group>";
 		};
 		B3EB0664206788DE000F68AE /* Frameworks */ = {

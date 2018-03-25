@@ -40,18 +40,20 @@
     }
     
     __weak __typeof__ (self) wself = self;
-    self.dataTask = [self.session dataTaskWithRequest:_request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    // ignore progress of loading image, use completion handler directly.
+    self.dataTask = [self.session dataTaskWithRequest:_request
+                                    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         for (ImageDownloadCompleteBlock completeBlock in wself.completeBlockArray) {
             completeBlock(data, error);
         }
-        [self done];
+        [wself done];
     }];
     [self.dataTask resume];
     self.executing = YES;
 }
 
-- (BOOL)isConcurrent {
-    return YES;
+- (void)addCompleteBlock:(ImageDownloadCompleteBlock)completeBlock {
+    [self.completeBlockArray addObject:completeBlock];
 }
 
 - (void)cancel {
@@ -78,7 +80,7 @@
     [self didChangeValueForKey:@"isExecuting"];
 }
 
-- (void)addCompleteBlock:(ImageDownloadCompleteBlock)completeBlock {
-    [self.completeBlockArray addObject:completeBlock];
+- (BOOL)isConcurrent {
+    return YES;
 }
 @end

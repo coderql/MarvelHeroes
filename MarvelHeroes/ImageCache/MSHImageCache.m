@@ -17,7 +17,7 @@
 @end
 
 @implementation MSHImageCache
-
+#pragma initialization
 + (nonnull instancetype)sharedInstance {
     static dispatch_once_t once;
     static id instance;
@@ -40,13 +40,15 @@
     return self;
 }
 
-- (void)storeImage:(nullable NSData *)imageData key:(nonnull NSString *)key {
+#pragma interface implementation
+- (void)storeImage:(nonnull NSData *)imageData key:(nonnull NSString *)key {
+    MSHLog(@"store image data to memory for key: %@", key);
     [self.memCache setObject:imageData forKey:key];
-    
+    MSHLog(@"store image data to disk for key: %@", key);
     [self storeImageToDisk:imageData key:key];
 }
 
-- (NSData *)getImageForKey:(nonnull NSString *)key {
+- (nullable NSData *)getImageForKey:(nonnull NSString *)key {
     NSData *data = [self memImageForKey:key];
     if (data != nil) {
         MSHLog(@"hit memory cache for key: %@", key);
@@ -65,39 +67,86 @@
 
 - (void)removeImageForKey:(nonnull NSString *)key {
     [self.memCache removeObjectForKey:key];
-    [self.fileManager removeItemAtPath:[self cacheDiskPathForKey:key] error:nil];
+    NSString *diskPath = [self cacheDiskPathForKey:key];
+    if ([self.fileManager removeItemAtPath:diskPath error:nil]) {
+        MSHLog(@"remove disk cache(key=%@) succeed.", key);
+    } else {
+        MSHLog(@"remove disk cache(key=%@) failed.", key);
+    }
 }
 
 #pragma disk cache
-- (nullable NSString *)cachedDiskNameForKey:(nullable NSString *)cacheKey {
+/**
+ * Generate file name for the given cache key.
+ *
+ * @param cacheKey cache key
+ */
+- (nonnull NSString *)cachedDiskNameForKey:(nonnull NSString *)cacheKey {
     return [cacheKey MD5];
 }
 
-- (nullable NSString *)cacheDiskPathForKey:(nullable NSString *)cacheKey {
+/**
+ * Get disk path for the given key.
+ *
+ * @param cacheKey cache key.
+ * @return full file path for the given key.
+ */
+- (nonnull NSString *)cacheDiskPathForKey:(nonnull NSString *)cacheKey {
     NSString *filename = [self cachedDiskNameForKey:cacheKey];
     return [self.diskCachePath stringByAppendingPathComponent:filename];
 }
 
-- (void)storeImageToDisk:(nullable NSData *)imageData key:(nullable NSString *)key {
+/**
+ * store image data to disk. ignore failure condition, try next time.
+ *
+ * @param imageData data to store.
+ * @param key cache key
+ */
+- (void)storeImageToDisk:(nonnull NSData *)imageData key:(nonnull NSString *)key {
     if (![self.fileManager fileExistsAtPath:self.diskCachePath]) {
-        [self.fileManager createDirectoryAtPath:self.diskCachePath withIntermediateDirectories:YES attributes:nil error:NULL];
+        if (![self.fileManager createDirectoryAtPath:self.diskCachePath withIntermediateDirectories:YES attributes:nil error:NULL]) {
+            MSHLog(@"create directory(%@) failed.", self.diskCachePath);
+            return;
+        }
     }
     NSString *cachePath = [self cacheDiskPathForKey:key];
     NSURL *cacheFileUrl = [NSURL fileURLWithPath:cachePath];
-    [imageData writeToURL:cacheFileUrl atomically:YES];
+    if ([imageData writeToURL:cacheFileUrl atomically:YES]) {
+        MSHLog(@"store key(%@)'s data to %@ succeeed.", key, cachePath);
+    } else {
+        MSHLog(@"store key(%@)'s data to %@ succeeed.", key, cachePath);
+    }
 }
 
+/**
+ * Is data stored on disk for the given key.
+ *
+ * @param key cache key
+ * @return is data stored.
+ */
 - (BOOL)isDiskExistsForKey:(nonnull NSString *)key {
     NSString *cachePath = [self cacheDiskPathForKey:key];
     return [self.fileManager fileExistsAtPath:cachePath];
 }
 
+/**
+ * Get image data on disk for the given key.
+ *
+ * @param key cache key
+ * @return data on disk for the key.
+ */
 - (nullable NSData *)diskImageForKey:(nonnull NSString *)key {
     NSString *defaultPath = [self cacheDiskPathForKey:key];
     return [NSData dataWithContentsOfFile:defaultPath options:0 error:nil];
 }
 
 #pragma memory cache
+/**
+ * Get image data from memory for the given key.
+ *
+ * @param key cache key
+ * @return data stored in memory for the key.
+ */
 - (nullable NSData *)memImageForKey:(nonnull NSString *)key {
     return [self.memCache objectForKey:key];
 }

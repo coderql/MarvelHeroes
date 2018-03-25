@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "MSHHeroService.h"
 
+/**
+ * Encapsulate some common services for all hero implementations.
+ */
 @interface MSHBaseHeroService : NSObject<MSHHeroService>
 
 @end

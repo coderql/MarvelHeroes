@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface MSHDBManager : NSObject
-+ (nonnull instancetype)manager;
-- (NSArray *)findFavoredHeroes:(NSArray *)heroIds;
++ (nullable instancetype)manager;
+- (nonnull NSArray *)findFavoredHeroes:(nullable NSArray *)heroIds;
 - (BOOL)unfavorHero:(int)heroId;
 - (BOOL)favorHero:(int)heroId;
 - (BOOL)close;

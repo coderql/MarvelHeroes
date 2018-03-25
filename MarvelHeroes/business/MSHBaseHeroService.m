@@ -22,4 +22,43 @@
 - (NSArray*)favoredHeros:(NSArray *)heroIds {
     return [[MSHDBManager manager] findFavoredHeroes:heroIds];
 }
+
+- (void)getHeroesOffset:(int)offset
+                  limit:(int)limit
+         nameStartsWith:(nullable  NSString *)startName
+          resultHandler:(nullable MSHResultHandler)handler {
+    AbstractMethodNotImplemented();
+}
+
+- (void)getComicsOfHero:(int)heroId
+                 offset:(int)offset
+                  limit:(int)limit
+          resultHandler:(nullable MSHResultHandler)handler {
+    AbstractMethodNotImplemented();
+}
+
+- (void)getEventsOfHero:(int)heroId
+                 offset:(int)offset
+                  limit:(int)limit
+          resultHandler:(nullable MSHResultHandler)handler {
+    AbstractMethodNotImplemented();
+}
+
+- (void)getStoriesOfHero:(int)heroId
+                  offset:(int)offset
+                   limit:(int)limit
+           resultHandler:(nullable MSHResultHandler)handler {
+    AbstractMethodNotImplemented();
+}
+
+- (void)getSeriesOfHero:(int)heroId
+                 offset:(int)offset
+                  limit:(int)limit
+          resultHandler:(nullable MSHResultHandler)handler {
+    AbstractMethodNotImplemented();
+}
+
+- (nonnull NSString *)getHeroThumbnailURL:(nonnull MSHThumbnail *)thumbnail {
+    AbstractMethodNotImplemented();
+}
 @end
