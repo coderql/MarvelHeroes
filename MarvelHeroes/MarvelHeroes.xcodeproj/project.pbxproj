@@ -22,6 +22,11 @@
 		B3EB064A2064D6B5000F68AE /* MSHPageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB06492064D6B5000F68AE /* MSHPageInfo.m */; };
 		B3EB064D2065E522000F68AE /* MSHEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB064C2065E522000F68AE /* MSHEntity.m */; };
 		B3EB06502065E8EB000F68AE /* MSHBaseHeroService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB064F2065E8EB000F68AE /* MSHBaseHeroService.m */; };
+		B3EB06542065FB7F000F68AE /* MSHImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB06532065FB7F000F68AE /* MSHImageCache.m */; };
+		B3EB0657206611C5000F68AE /* MSHImageDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB0656206611C5000F68AE /* MSHImageDownloadOperation.m */; };
+		B3EB065D20662AD2000F68AE /* MSHImageDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB065C20662AD2000F68AE /* MSHImageDownloadManager.m */; };
+		B3EB06602066799F000F68AE /* UIImageView+MSHCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB065F2066799F000F68AE /* UIImageView+MSHCache.m */; };
+		B3EB066320668145000F68AE /* MSHImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB066220668145000F68AE /* MSHImageManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +59,16 @@
 		B3EB064C2065E522000F68AE /* MSHEntity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHEntity.m; sourceTree = "<group>"; };
 		B3EB064E2065E8EB000F68AE /* MSHBaseHeroService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHBaseHeroService.h; sourceTree = "<group>"; };
 		B3EB064F2065E8EB000F68AE /* MSHBaseHeroService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHBaseHeroService.m; sourceTree = "<group>"; };
+		B3EB06522065FB7F000F68AE /* MSHImageCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHImageCache.h; sourceTree = "<group>"; };
+		B3EB06532065FB7F000F68AE /* MSHImageCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHImageCache.m; sourceTree = "<group>"; };
+		B3EB0655206611C5000F68AE /* MSHImageDownloadOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHImageDownloadOperation.h; sourceTree = "<group>"; };
+		B3EB0656206611C5000F68AE /* MSHImageDownloadOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHImageDownloadOperation.m; sourceTree = "<group>"; };
+		B3EB065B20662AD2000F68AE /* MSHImageDownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHImageDownloadManager.h; sourceTree = "<group>"; };
+		B3EB065C20662AD2000F68AE /* MSHImageDownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHImageDownloadManager.m; sourceTree = "<group>"; };
+		B3EB065E2066799F000F68AE /* UIImageView+MSHCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MSHCache.h"; sourceTree = "<group>"; };
+		B3EB065F2066799F000F68AE /* UIImageView+MSHCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MSHCache.m"; sourceTree = "<group>"; };
+		B3EB066120668145000F68AE /* MSHImageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHImageManager.h; sourceTree = "<group>"; };
+		B3EB066220668145000F68AE /* MSHImageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHImageManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +85,7 @@
 		B3EB060C20633C91000F68AE = {
 			isa = PBXGroup;
 			children = (
+				B3EB06512065FB59000F68AE /* Image */,
 				B3EB063F2063F323000F68AE /* NSString+MD5.h */,
 				B3EB06402063F323000F68AE /* NSString+MD5.m */,
 				B3EB063820636817000F68AE /* model */,
@@ -140,6 +156,23 @@
 				B3EB064C2065E522000F68AE /* MSHEntity.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		B3EB06512065FB59000F68AE /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				B3EB06522065FB7F000F68AE /* MSHImageCache.h */,
+				B3EB06532065FB7F000F68AE /* MSHImageCache.m */,
+				B3EB0655206611C5000F68AE /* MSHImageDownloadOperation.h */,
+				B3EB0656206611C5000F68AE /* MSHImageDownloadOperation.m */,
+				B3EB065B20662AD2000F68AE /* MSHImageDownloadManager.h */,
+				B3EB065C20662AD2000F68AE /* MSHImageDownloadManager.m */,
+				B3EB065E2066799F000F68AE /* UIImageView+MSHCache.h */,
+				B3EB065F2066799F000F68AE /* UIImageView+MSHCache.m */,
+				B3EB066120668145000F68AE /* MSHImageManager.h */,
+				B3EB066220668145000F68AE /* MSHImageManager.m */,
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,12 +250,17 @@
 				B3EB06502065E8EB000F68AE /* MSHBaseHeroService.m in Sources */,
 				B3EB063320633EEC000F68AE /* MSHHttpSessionManager.m in Sources */,
 				B3EB062820633C91000F68AE /* main.m in Sources */,
+				B3EB06602066799F000F68AE /* UIImageView+MSHCache.m in Sources */,
+				B3EB0657206611C5000F68AE /* MSHImageDownloadOperation.m in Sources */,
+				B3EB066320668145000F68AE /* MSHImageManager.m in Sources */,
 				B3EB063B20636834000F68AE /* MSHHero.m in Sources */,
 				B3EB06472064D330000F68AE /* MSHThumbnail.m in Sources */,
 				B3EB064D2065E522000F68AE /* MSHEntity.m in Sources */,
 				B3EB061A20633C91000F68AE /* AppDelegate.m in Sources */,
 				B3EB063E2063689E000F68AE /* MSHMarvelHeroService.m in Sources */,
 				B3EB06442064A932000F68AE /* MSHModel.m in Sources */,
+				B3EB065D20662AD2000F68AE /* MSHImageDownloadManager.m in Sources */,
+				B3EB06542065FB7F000F68AE /* MSHImageCache.m in Sources */,
 				B3EB06412063F323000F68AE /* NSString+MD5.m in Sources */,
 				B3EB064A2064D6B5000F68AE /* MSHPageInfo.m in Sources */,
 			);
