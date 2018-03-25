@@ -14,4 +14,5 @@
 @property (nonatomic, assign) NSInteger total;
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, strong) NSArray *data;
+
 @end

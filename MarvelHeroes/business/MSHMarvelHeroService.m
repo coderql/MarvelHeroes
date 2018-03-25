@@ -99,9 +99,18 @@ NSString * const MarvelBasePath = @"https://gateway.marvel.com/v1/public/";
         if (results != nil && [results count] > 0) {
             pageInfo.data = successHandler(results);
         }
-        handler(pageInfo, nil);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (handler) {
+                handler(pageInfo, nil);
+            }
+        });
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        handler(nil, error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (handler) {
+                handler(nil, error);
+            }
+        });
     }];
 }
 

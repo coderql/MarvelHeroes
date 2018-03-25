@@ -1,0 +1,18 @@
+//
+//  MSHPrefixHeader.pch
+//  MarvelHeroes
+//
+//  Created by qian zhao on 2018/3/24.
+//  Copyright © 2018年 leo. All rights reserved.
+//
+
+#ifndef MSHPrefixHeader_pch
+#define MSHPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "MSHMacros.h"
+#import "MSHUtils.h"
+
+#endif /* MSHPrefixHeader_pch */

@@ -6,10 +6,9 @@
 //  Copyright © 2018年 leo. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "MSHBaseViewController.h"
 
-@interface ViewController : UIViewController
-
+@interface ViewController : MSHBaseViewController
 
 @end
 
