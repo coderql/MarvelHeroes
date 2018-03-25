@@ -36,6 +36,8 @@
 		B3EB065D20662AD2000F68AE /* MSHImageDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB065C20662AD2000F68AE /* MSHImageDownloadManager.m */; };
 		B3EB06602066799F000F68AE /* UIImageView+MSHCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB065F2066799F000F68AE /* UIImageView+MSHCache.m */; };
 		B3EB066320668145000F68AE /* MSHImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB066220668145000F68AE /* MSHImageManager.m */; };
+		B3EB0666206788DE000F68AE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EB0665206788DE000F68AE /* libsqlite3.dylib */; };
+		B3EB066A2067893C000F68AE /* MSHDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB06692067893C000F68AE /* MSHDBManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +100,9 @@
 		B3EB065F2066799F000F68AE /* UIImageView+MSHCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MSHCache.m"; sourceTree = "<group>"; };
 		B3EB066120668145000F68AE /* MSHImageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHImageManager.h; sourceTree = "<group>"; };
 		B3EB066220668145000F68AE /* MSHImageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHImageManager.m; sourceTree = "<group>"; };
+		B3EB0665206788DE000F68AE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
+		B3EB06682067893C000F68AE /* MSHDBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHDBManager.h; sourceTree = "<group>"; };
+		B3EB06692067893C000F68AE /* MSHDBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHDBManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3EB0666206788DE000F68AE /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +160,7 @@
 		B3EB060C20633C91000F68AE = {
 			isa = PBXGroup;
 			children = (
+				B3EB066720678917000F68AE /* database */,
 				B3EB06512065FB59000F68AE /* Image */,
 				7851C2F52066043B006C6655 /* utils */,
 				7851C2E92065FDDE006C6655 /* views */,
@@ -165,6 +172,7 @@
 				B3EB063020633EBD000F68AE /* network */,
 				B3EB061720633C91000F68AE /* MarvelHeroes */,
 				B3EB061620633C91000F68AE /* Products */,
+				B3EB0664206788DE000F68AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -246,6 +254,23 @@
 				B3EB066220668145000F68AE /* MSHImageManager.m */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		B3EB0664206788DE000F68AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3EB0665206788DE000F68AE /* libsqlite3.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B3EB066720678917000F68AE /* database */ = {
+			isa = PBXGroup;
+			children = (
+				B3EB06682067893C000F68AE /* MSHDBManager.h */,
+				B3EB06692067893C000F68AE /* MSHDBManager.m */,
+			);
+			path = database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +364,7 @@
 				7851C2FA20663AE9006C6655 /* MSHDetailController.m in Sources */,
 				B3EB061A20633C91000F68AE /* AppDelegate.m in Sources */,
 				B3EB063E2063689E000F68AE /* MSHMarvelHeroService.m in Sources */,
+				B3EB066A2067893C000F68AE /* MSHDBManager.m in Sources */,
 				B3EB06442064A932000F68AE /* MSHModel.m in Sources */,
 				B3EB065D20662AD2000F68AE /* MSHImageDownloadManager.m in Sources */,
 				B3EB06542065FB7F000F68AE /* MSHImageCache.m in Sources */,

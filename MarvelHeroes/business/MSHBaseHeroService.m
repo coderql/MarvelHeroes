@@ -7,17 +7,19 @@
 //
 
 #import "MSHBaseHeroService.h"
+#import "MSHDBManager.h"
 
 @implementation MSHBaseHeroService
-- (void)favor:(int)heroId {
-    
+- (BOOL)favor:(int)heroId {
+    return [[MSHDBManager manager] favorHero:heroId];
 }
 
-- (void)unfavor:(int)heroId {
-    
+- (BOOL)unfavor:(int)heroId {
+    return [[MSHDBManager manager] unfavorHero:heroId];
 }
 
-- (BOOL)isFavorite:(int)heroId {
-    return NO;
+
+- (NSArray*)favoredHeros:(NSArray *)heroIds {
+    return [[MSHDBManager manager] findFavoredHeroes:heroIds];
 }
 @end

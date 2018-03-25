@@ -37,9 +37,9 @@ typedef void (^MSHResultHandler)(id responseObject, NSError *error);
                   limit:(int)limit
           resultHandler:(MSHResultHandler)handler;
 
-- (void)favor:(int)heroId;
+- (BOOL)favor:(int)heroId;
 
-- (void)unfavor:(int)heroId;
+- (BOOL)unfavor:(int)heroId;
 
-- (BOOL)isFavorite:(int)heroId;
+- (NSArray*)favoredHeros:(NSArray *)heroIds;
 @end
