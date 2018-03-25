@@ -248,10 +248,10 @@
 				B3EB0656206611C5000F68AE /* MSHImageDownloadOperation.m */,
 				B3EB065B20662AD2000F68AE /* MSHImageDownloadManager.h */,
 				B3EB065C20662AD2000F68AE /* MSHImageDownloadManager.m */,
-				B3EB065E2066799F000F68AE /* UIImageView+MSHCache.h */,
-				B3EB065F2066799F000F68AE /* UIImageView+MSHCache.m */,
 				B3EB066120668145000F68AE /* MSHImageManager.h */,
 				B3EB066220668145000F68AE /* MSHImageManager.m */,
+				B3EB065E2066799F000F68AE /* UIImageView+MSHCache.h */,
+				B3EB065F2066799F000F68AE /* UIImageView+MSHCache.m */,
 			);
 			path = Image;
 			sourceTree = "<group>";

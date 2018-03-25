@@ -31,7 +31,8 @@
     self = [super init];
     if (self) {
         NSArray<NSString *> *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-        _diskCachePath = [paths[0] stringByAppendingString:@"mshcache"];
+        _diskCachePath = [paths[0] stringByAppendingPathComponent:@"mshcache"];
+        MSHLog(@"disk cache path: %@", _diskCachePath);
         _fileManager = [NSFileManager new];
         
         _memCache = [NSCache new];
@@ -47,11 +48,17 @@
 
 - (NSData *)getImageForKey:(nonnull NSString *)key {
     NSData *data = [self memImageForKey:key];
-    if (data != nil) return data;
+    if (data != nil) {
+        MSHLog(@"hit memory cache for key: %@", key);
+        return data;
+    }
     
     data = [self diskImageForKey:key];
     if (data != nil) {
         [self.memCache setObject:data forKey:key];
+        MSHLog(@"hit disk cache for key: %@", key);
+    } else {
+        MSHLog(@"hit cache miss for key: %@", key);
     }
     return data;
 }

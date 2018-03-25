@@ -15,4 +15,10 @@
 #import "MSHMacros.h"
 #import "MSHUtils.h"
 
+#ifdef DEBUG
+#define MSHLog(...) NSLog(__VA_ARGS__)
+#else
+#define MSHLog(...)
+#endif
+
 #endif /* MSHPrefixHeader_pch */

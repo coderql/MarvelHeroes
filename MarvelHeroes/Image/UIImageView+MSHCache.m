@@ -11,13 +11,13 @@
 
 @implementation UIImageView (MSHCache)
 - (void)setImageUrl:(NSURL *)url placeholder:(UIImage *)placeholderImage {
-    // cancel previous operation in this image view.
+    // set placeholder image first.
     dispatch_async(dispatch_get_main_queue(), ^ {
         [self setImage:placeholderImage];
     });
     
-    MSHImageManager *manager = [MSHImageManager sharedInstance];
-    [manager loadImageURL:url completion:^(NSData *data, NSError *error) {
+    // replace with loaded image.
+    [[MSHImageManager manager] loadImageURL:url completion:^(NSData *data, NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
         dispatch_async(dispatch_get_main_queue(), ^ {
             [self setImage:image];

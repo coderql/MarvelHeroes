@@ -70,4 +70,8 @@
     [self searchWithOffset:offset destText:searchText status:NO];
 }
 
+- (NSString *)getImageUrlWithThumbnail:(MSHThumbnail *)thumbnail {
+    return [self.webService getHeroThumbnailURL:thumbnail imageParam:@{@"variant": @"portrait_uncanny"}];
+}
+
 @end

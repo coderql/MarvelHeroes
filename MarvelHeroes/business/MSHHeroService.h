@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class MSHThumbnail;
 
 typedef void (^MSHResultHandler)(id responseObject, NSError *error);
 
@@ -36,6 +37,9 @@ typedef void (^MSHResultHandler)(id responseObject, NSError *error);
                  offset:(int)offset
                   limit:(int)limit
           resultHandler:(MSHResultHandler)handler;
+
+- (NSString *)getHeroThumbnailURL:(MSHThumbnail *)thumbnail
+                       imageParam:(NSDictionary *)imageParam;
 
 - (BOOL)favor:(int)heroId;
 
