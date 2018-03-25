@@ -2,7 +2,7 @@
 //  MSHHeroDetailPresenter.m
 //  MarvelHeroes
 //
-//  Created by qian zhao on 2018/3/25.
+//  Created by Leo on 2018/3/25.
 //  Copyright © 2018年 leo. All rights reserved.
 //
 
@@ -26,41 +26,45 @@
 }
 
 - (void)getComicsWithHeroId:(NSNumber *)heroId {
+    __weak __typeof(self) weakSelf = self;
     [self.heroService getComicsOfHero:[heroId intValue] offset:0 limit:kEntityLimit resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
         if (responseObject) {
-            [self.view getComicsSuccess:responseObject.data];
+            [weakSelf.view getComicsSuccess:responseObject.data];
         } else {
-            [self.view getComicsFailure:error];
+            [weakSelf.view getComicsFailure:error];
         }
     }];
 }
 
 - (void)getEventsWithHeroId:(NSNumber *)heroId {
+    __weak __typeof(self) weakSelf = self;
     [self.heroService getEventsOfHero:[heroId intValue] offset:0 limit:kEntityLimit resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
         if (responseObject) {
-            [self.view getEventsSuccess:responseObject.data];
+            [weakSelf.view getEventsSuccess:responseObject.data];
         } else {
-            [self.view getEventsFailure:error];
+            [weakSelf.view getEventsFailure:error];
         }
     }];
 }
 
 - (void)getStoriesWithHeroId:(NSNumber *)heroId {
+    __weak __typeof(self) weakSelf = self;
     [self.heroService getStoriesOfHero:[heroId intValue] offset:0 limit:kEntityLimit resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
         if (responseObject) {
-            [self.view getStoriesSuccess:responseObject.data];
+            [weakSelf.view getStoriesSuccess:responseObject.data];
         } else {
-            [self.view getStoriesFailure:error];
+            [weakSelf.view getStoriesFailure:error];
         }
     }];
 }
 
 - (void)getSeriesWithHeroId:(NSNumber *)heroId {
+    __weak __typeof(self) weakSelf = self;
     [self.heroService getSeriesOfHero:[heroId intValue] offset:0 limit:kEntityLimit resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
         if (responseObject) {
-            [self.view getSeriesSuccess:responseObject.data];
+            [weakSelf.view getSeriesSuccess:responseObject.data];
         } else {
-            [self.view getSeriesFailure:error];
+            [weakSelf.view getSeriesFailure:error];
         }
     }];
 }
@@ -70,13 +74,14 @@
 }
 
 - (void)favorHero:(BOOL)isFavor heroId:(int)heroId {
+    __weak __typeof(self) weakSelf = self;
     if (isFavor) {
         [self.heroService favorHero:heroId resultHandler:^(id responseObject, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^ {
                 if ([responseObject boolValue]) {
-                    [self.view favorCompleted:nil];
+                    [weakSelf.view favorCompleted:nil];
                 } else {
-                    [self.view favorCompleted:[[NSError alloc] initWithDomain:@"com.MSH" code:-1 userInfo:nil]];
+                    [weakSelf.view favorCompleted:[[NSError alloc] initWithDomain:@"com.MSH" code:-1 userInfo:nil]];
                 }
             });
         }];
@@ -84,9 +89,9 @@
         [self.heroService unfavorHero:heroId resultHandler:^(id responseObject, NSError *error) {
                         dispatch_async(dispatch_get_main_queue(), ^ {
                             if ([responseObject boolValue]) {
-                                [self.view favorCompleted:nil];
+                                [weakSelf.view favorCompleted:nil];
                             } else {
-                                [self.view favorCompleted:[[NSError alloc] initWithDomain:@"com.MSH" code:-1 userInfo:nil]];
+                                [weakSelf.view favorCompleted:[[NSError alloc] initWithDomain:@"com.MSH" code:-1 userInfo:nil]];
                             }
             });
         }];

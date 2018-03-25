@@ -49,7 +49,7 @@
         // do not use NSURL cache since we have handled cache in MSHImageManager.
         NSURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
         operation = [[MSHImageDownloadOperation alloc] initWithRequest:request session:self.session];
-        __weak typeof(self) wself = self;
+        __weak __typeof(self) wself = self;
         operation.completionBlock = ^ {
             // remove current operations after request is finished.
             [wself.operations removeObjectForKey:url];

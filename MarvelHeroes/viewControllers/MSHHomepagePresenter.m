@@ -2,7 +2,7 @@
 //  MSHHomepagePresenter.m
 //  MarvelHeroes
 //
-//  Created by qian zhao on 2018/3/24.
+//  Created by Leo on 2018/3/24.
 //  Copyright © 2018年 leo. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 
 @interface MSHHomepagePresenter()
 @property (nonatomic, weak) id<MSHHomepageProtocol> view;
-@property (nonatomic, strong) MSHMarvelHeroService *webService;
+@property (nonatomic, strong) MSHMarvelHeroService *heroService;
 @end
 
 @implementation MSHHomepagePresenter
@@ -21,47 +21,45 @@
 - (instancetype)initWithView:(id<MSHHomepageProtocol>)view {
     if (self = [super init]) {
         _view = view;
-        _webService = [[MSHMarvelHeroService alloc] init];
+        _heroService = [[MSHMarvelHeroService alloc] init];
     }
     return self;
 }
 
 - (void)loadDataWithOffset:(int)offset
                     status:(BOOL)loadFirstPage {
-    [self.webService getHeroesOffset:offset
+    __weak __typeof(self) weakSelf = self;
+    [self.heroService getHeroesOffset:offset
                                limit:kDataLimit
                       nameStartsWith:nil
                        resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
-                           dispatch_async(dispatch_get_main_queue(), ^ {
-                               if (responseObject) {
-                                   [self handleResults:responseObject.data complete:^(NSArray * array) {
-                                       responseObject.data = array;
-                                       [self.view loadSuccess:responseObject isFirstPage:loadFirstPage noMoreData:(responseObject.offset + responseObject.count >= responseObject.total)];
-                                   }];
-                               } else {
-                                   [self.view loadFailure:error isFirstPage:loadFirstPage];
-                               }
-                           });
+                           if (responseObject) {
+                               [weakSelf handleResults:responseObject.data complete:^(NSArray * array) {
+                                   responseObject.data = array;
+                                   [weakSelf.view loadSuccess:responseObject isFirstPage:loadFirstPage noMoreData:(responseObject.offset + responseObject.count >= responseObject.total)];
+                               }];
+                           } else {
+                               [weakSelf.view loadFailure:error isFirstPage:loadFirstPage];
+                           }
                        }];
 }
 
 - (void)searchWithOffset:(int)offset
                 destText:(NSString *)text
                   status:(BOOL)loadFirstPage {
-    [self.webService getHeroesOffset:offset
+    __weak __typeof(self) weakSelf = self;
+    [self.heroService getHeroesOffset:offset
                                limit:kDataLimit
                       nameStartsWith:text
                        resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
-                           dispatch_async(dispatch_get_main_queue(), ^ {
-                               if (responseObject) {
-                                   [self handleResults:responseObject.data complete:^(NSArray * array) {
-                                       responseObject.data = array;
-                                       [self.view searchSuccess:responseObject isFirstPage:loadFirstPage noMoreData:(responseObject.offset + responseObject.count >= responseObject.total)];
-                                   }];
-                               } else {
-                                   [self.view searchFailure:error isFirstPage:loadFirstPage];
-                               }
-                           });
+                           if (responseObject) {
+                               [weakSelf handleResults:responseObject.data complete:^(NSArray * array) {
+                                   responseObject.data = array;
+                                   [weakSelf.view searchSuccess:responseObject isFirstPage:loadFirstPage noMoreData:(responseObject.offset + responseObject.count >= responseObject.total)];
+                               }];
+                           } else {
+                               [weakSelf.view searchFailure:error isFirstPage:loadFirstPage];
+                           }
                        }];
 }
 
@@ -74,12 +72,14 @@
     for(MSHHero *hero in results) {
         [heroIds addObject:@(hero.heroId)];
     }
-    [self.webService favoredHeros:[heroIds copy] resultHandler:^(id responseObject, NSError * error) {
+    [self.heroService favoredHeros:[heroIds copy] resultHandler:^(id responseObject, NSError * error) {
         NSArray *favorResult = (NSArray *) responseObject;
         for(MSHHero *hero in results) {
             hero.isFavorite = [favorResult containsObject:@(hero.heroId)];
         }
-        completeBlock(results);
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            completeBlock(results);
+        });
     }];
 }
 
@@ -101,7 +101,7 @@
 
 - (NSString *)getImageUrlWithThumbnail:(MSHThumbnail *)thumbnail {
     thumbnail.variant = @"portrait_uncanny";
-    return [self.webService getHeroThumbnailURL:thumbnail];
+    return [self.heroService getHeroThumbnailURL:thumbnail];
 }
 
 @end
