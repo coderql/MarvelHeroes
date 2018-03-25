@@ -72,19 +72,23 @@
 - (void)favorHero:(BOOL)isFavor heroId:(int)heroId {
     if (isFavor) {
         [self.heroService favorHero:heroId resultHandler:^(id responseObject, NSError *error) {
-            if ([responseObject boolValue]) {
-                [self.view favorCompleted:nil];
-            } else {
-                [self.view favorCompleted:[[NSError alloc] initWithDomain:@"com.MSH" code:-1 userInfo:nil]];
-            }
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                if ([responseObject boolValue]) {
+                    [self.view favorCompleted:nil];
+                } else {
+                    [self.view favorCompleted:[[NSError alloc] initWithDomain:@"com.MSH" code:-1 userInfo:nil]];
+                }
+            });
         }];
     } else {
         [self.heroService unfavorHero:heroId resultHandler:^(id responseObject, NSError *error) {
-            if ([responseObject boolValue]) {
-                [self.view favorCompleted:nil];
-            } else {
-                [self.view favorCompleted:[[NSError alloc] initWithDomain:@"com.MSH" code:-1 userInfo:nil]];
-            }
+                        dispatch_async(dispatch_get_main_queue(), ^ {
+                            if ([responseObject boolValue]) {
+                                [self.view favorCompleted:nil];
+                            } else {
+                                [self.view favorCompleted:[[NSError alloc] initWithDomain:@"com.MSH" code:-1 userInfo:nil]];
+                            }
+            });
         }];
     }
 }

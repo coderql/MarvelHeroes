@@ -127,13 +127,15 @@
 		7851C2E82065FB97006C6655 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7851C2F820663AE8006C6655 /* MSHDetailController.h */,
-				7851C2F920663AE9006C6655 /* MSHDetailController.m */,
 				7851C3082066937C006C6655 /* MSHBaseViewController.h */,
 				7851C3092066937C006C6655 /* MSHBaseViewController.m */,
+				B3EB061B20633C91000F68AE /* ViewController.h */,
+				B3EB061C20633C91000F68AE /* ViewController.m */,
 				7851C30B206696C3006C6655 /* MSHHomepagePresenter.h */,
 				7851C30C206696C3006C6655 /* MSHHomepagePresenter.m */,
 				7851C30E206696D8006C6655 /* MSHHomepageProtocol.h */,
+				7851C2F820663AE8006C6655 /* MSHDetailController.h */,
+				7851C2F920663AE9006C6655 /* MSHDetailController.m */,
 				7851C312206789BE006C6655 /* MSHHeroDetailPresenter.h */,
 				7851C313206789BE006C6655 /* MSHHeroDetailPresenter.m */,
 				7851C315206789D1006C6655 /* MSHHeroDetailProtocol.h */,
@@ -176,14 +178,12 @@
 		B3EB060C20633C91000F68AE = {
 			isa = PBXGroup;
 			children = (
-				B3EB066720678917000F68AE /* database */,
-				B3EB06512065FB59000F68AE /* ImageCache */,
+				B3EB066F20680607000F68AE /* Library */,
 				7851C2F52066043B006C6655 /* utils */,
 				7851C2E92065FDDE006C6655 /* views */,
 				7851C2E82065FB97006C6655 /* viewControllers */,
 				B3EB063820636817000F68AE /* model */,
 				B3EB063420636792000F68AE /* business */,
-				B3EB063020633EBD000F68AE /* network */,
 				B3EB061720633C91000F68AE /* MarvelHeroes */,
 				B3EB061620633C91000F68AE /* Products */,
 				B3EB0664206788DE000F68AE /* Frameworks */,
@@ -203,8 +203,6 @@
 			children = (
 				B3EB061820633C91000F68AE /* AppDelegate.h */,
 				B3EB061920633C91000F68AE /* AppDelegate.m */,
-				B3EB061B20633C91000F68AE /* ViewController.h */,
-				B3EB061C20633C91000F68AE /* ViewController.m */,
 				B3EB061E20633C91000F68AE /* Main.storyboard */,
 				B3EB062120633C91000F68AE /* Assets.xcassets */,
 				B3EB062320633C91000F68AE /* LaunchScreen.storyboard */,
@@ -283,6 +281,16 @@
 				B3EB06692067893C000F68AE /* MSHDBManager.m */,
 			);
 			path = database;
+			sourceTree = "<group>";
+		};
+		B3EB066F20680607000F68AE /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				B3EB06512065FB59000F68AE /* ImageCache */,
+				B3EB063020633EBD000F68AE /* network */,
+				B3EB066720678917000F68AE /* database */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

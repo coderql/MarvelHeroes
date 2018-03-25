@@ -32,14 +32,16 @@
                                limit:kDataLimit
                       nameStartsWith:nil
                        resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
-                           if (responseObject) {
-                               [self handleResults:responseObject.data complete:^(NSArray * array) {
-                                   responseObject.data = array;
-                                   [self.view loadSuccess:responseObject isFirstPage:loadFirstPage noMoreData:(responseObject.offset + responseObject.count >= responseObject.total)];
-                               }];
-                           } else {
-                               [self.view loadFailure:error isFirstPage:loadFirstPage];
-                           }
+                           dispatch_async(dispatch_get_main_queue(), ^ {
+                               if (responseObject) {
+                                   [self handleResults:responseObject.data complete:^(NSArray * array) {
+                                       responseObject.data = array;
+                                       [self.view loadSuccess:responseObject isFirstPage:loadFirstPage noMoreData:(responseObject.offset + responseObject.count >= responseObject.total)];
+                                   }];
+                               } else {
+                                   [self.view loadFailure:error isFirstPage:loadFirstPage];
+                               }
+                           });
                        }];
 }
 
@@ -50,14 +52,16 @@
                                limit:kDataLimit
                       nameStartsWith:text
                        resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
-                           if (responseObject) {
-                               [self handleResults:responseObject.data complete:^(NSArray * array) {
-                                   responseObject.data = array;
-                                   [self.view searchSuccess:responseObject isFirstPage:loadFirstPage noMoreData:(responseObject.offset + responseObject.count >= responseObject.total)];
-                               }];
-                           } else {
-                               [self.view searchFailure:error isFirstPage:loadFirstPage];
-                           }
+                           dispatch_async(dispatch_get_main_queue(), ^ {
+                               if (responseObject) {
+                                   [self handleResults:responseObject.data complete:^(NSArray * array) {
+                                       responseObject.data = array;
+                                       [self.view searchSuccess:responseObject isFirstPage:loadFirstPage noMoreData:(responseObject.offset + responseObject.count >= responseObject.total)];
+                                   }];
+                               } else {
+                                   [self.view searchFailure:error isFirstPage:loadFirstPage];
+                               }
+                           });
                        }];
 }
 

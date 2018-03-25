@@ -14,10 +14,6 @@
 #import "MSHNavigationBar.h"
 
 static NSString *const kInfoCellIdentifier = @"infoCell";
-static NSString *const kEntityComic = @"comic";
-static NSString *const kEntityEvent = @"event";
-static NSString *const kEntityStory = @"story";
-static NSString *const kEntitySeries = @"series";
 
 @interface MSHDetailController () <UITableViewDelegate, UITableViewDataSource, MSHHeroDetailProtocol, UIViewControllerTransitioningDelegate>
 {
