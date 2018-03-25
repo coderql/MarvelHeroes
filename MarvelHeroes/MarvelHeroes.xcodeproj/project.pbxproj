@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7851C2ED2065FE56006C6655 /* MSHCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C2EB2065FE56006C6655 /* MSHCollectionViewCell.m */; };
+		7851C2EE2065FE56006C6655 /* MSHCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7851C2EC2065FE56006C6655 /* MSHCollectionViewCell.xib */; };
+		7851C2FA20663AE9006C6655 /* MSHDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C2F920663AE9006C6655 /* MSHDetailController.m */; };
+		7851C2FD20663BBB006C6655 /* MSHDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C2FC20663BBB006C6655 /* MSHDetailHeaderView.m */; };
+		7851C304206643F4006C6655 /* MSHUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C303206643F4006C6655 /* MSHUtils.m */; };
+		7851C30720668ACD006C6655 /* MSHLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C30620668ACD006C6655 /* MSHLoadingView.m */; };
+		7851C30A2066937C006C6655 /* MSHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C3092066937C006C6655 /* MSHBaseViewController.m */; };
+		7851C30D206696C3006C6655 /* MSHHomepagePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C30C206696C3006C6655 /* MSHHomepagePresenter.m */; };
+		7851C3112066B523006C6655 /* MSHSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C3102066B523006C6655 /* MSHSearchView.m */; };
 		B3EB061A20633C91000F68AE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB061920633C91000F68AE /* AppDelegate.m */; };
 		B3EB061D20633C91000F68AE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB061C20633C91000F68AE /* ViewController.m */; };
 		B3EB062020633C91000F68AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EB061E20633C91000F68AE /* Main.storyboard */; };
@@ -30,6 +39,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7851C2EA2065FE56006C6655 /* MSHCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHCollectionViewCell.h; sourceTree = "<group>"; };
+		7851C2EB2065FE56006C6655 /* MSHCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHCollectionViewCell.m; sourceTree = "<group>"; };
+		7851C2EC2065FE56006C6655 /* MSHCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MSHCollectionViewCell.xib; sourceTree = "<group>"; };
+		7851C2F62066047D006C6655 /* MSHMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHMacros.h; sourceTree = "<group>"; };
+		7851C2F720660600006C6655 /* MSHPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHPrefixHeader.pch; sourceTree = "<group>"; };
+		7851C2F820663AE8006C6655 /* MSHDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHDetailController.h; sourceTree = "<group>"; };
+		7851C2F920663AE9006C6655 /* MSHDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHDetailController.m; sourceTree = "<group>"; };
+		7851C2FB20663BBA006C6655 /* MSHDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHDetailHeaderView.h; sourceTree = "<group>"; };
+		7851C2FC20663BBB006C6655 /* MSHDetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHDetailHeaderView.m; sourceTree = "<group>"; };
+		7851C302206643F4006C6655 /* MSHUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHUtils.h; sourceTree = "<group>"; };
+		7851C303206643F4006C6655 /* MSHUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHUtils.m; sourceTree = "<group>"; };
+		7851C30520668ACD006C6655 /* MSHLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHLoadingView.h; sourceTree = "<group>"; };
+		7851C30620668ACD006C6655 /* MSHLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHLoadingView.m; sourceTree = "<group>"; };
+		7851C3082066937C006C6655 /* MSHBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHBaseViewController.h; sourceTree = "<group>"; };
+		7851C3092066937C006C6655 /* MSHBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHBaseViewController.m; sourceTree = "<group>"; };
+		7851C30B206696C3006C6655 /* MSHHomepagePresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHHomepagePresenter.h; sourceTree = "<group>"; };
+		7851C30C206696C3006C6655 /* MSHHomepagePresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHHomepagePresenter.m; sourceTree = "<group>"; };
+		7851C30E206696D8006C6655 /* MSHHomepageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHHomepageProtocol.h; sourceTree = "<group>"; };
+		7851C30F2066B522006C6655 /* MSHSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHSearchView.h; sourceTree = "<group>"; };
+		7851C3102066B523006C6655 /* MSHSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHSearchView.m; sourceTree = "<group>"; };
 		B3EB061520633C91000F68AE /* MarvelHeroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelHeroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EB061820633C91000F68AE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B3EB061920633C91000F68AE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -82,10 +111,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7851C2E82065FB97006C6655 /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7851C2F820663AE8006C6655 /* MSHDetailController.h */,
+				7851C2F920663AE9006C6655 /* MSHDetailController.m */,
+				7851C3082066937C006C6655 /* MSHBaseViewController.h */,
+				7851C3092066937C006C6655 /* MSHBaseViewController.m */,
+				7851C30B206696C3006C6655 /* MSHHomepagePresenter.h */,
+				7851C30C206696C3006C6655 /* MSHHomepagePresenter.m */,
+				7851C30E206696D8006C6655 /* MSHHomepageProtocol.h */,
+			);
+			path = viewControllers;
+			sourceTree = "<group>";
+		};
+		7851C2E92065FDDE006C6655 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				7851C2EA2065FE56006C6655 /* MSHCollectionViewCell.h */,
+				7851C2EB2065FE56006C6655 /* MSHCollectionViewCell.m */,
+				7851C2EC2065FE56006C6655 /* MSHCollectionViewCell.xib */,
+				7851C2FB20663BBA006C6655 /* MSHDetailHeaderView.h */,
+				7851C2FC20663BBB006C6655 /* MSHDetailHeaderView.m */,
+				7851C30520668ACD006C6655 /* MSHLoadingView.h */,
+				7851C30620668ACD006C6655 /* MSHLoadingView.m */,
+				7851C30F2066B522006C6655 /* MSHSearchView.h */,
+				7851C3102066B523006C6655 /* MSHSearchView.m */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		7851C2F52066043B006C6655 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				7851C2F62066047D006C6655 /* MSHMacros.h */,
+				7851C302206643F4006C6655 /* MSHUtils.h */,
+				7851C303206643F4006C6655 /* MSHUtils.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		B3EB060C20633C91000F68AE = {
 			isa = PBXGroup;
 			children = (
 				B3EB06512065FB59000F68AE /* Image */,
+				7851C2F52066043B006C6655 /* utils */,
+				7851C2E92065FDDE006C6655 /* views */,
+				7851C2E82065FB97006C6655 /* viewControllers */,
 				B3EB063F2063F323000F68AE /* NSString+MD5.h */,
 				B3EB06402063F323000F68AE /* NSString+MD5.m */,
 				B3EB063820636817000F68AE /* model */,
@@ -116,6 +188,7 @@
 				B3EB062320633C91000F68AE /* LaunchScreen.storyboard */,
 				B3EB062620633C91000F68AE /* Info.plist */,
 				B3EB062720633C91000F68AE /* main.m */,
+				7851C2F720660600006C6655 /* MSHPrefixHeader.pch */,
 			);
 			path = MarvelHeroes;
 			sourceTree = "<group>";
@@ -201,6 +274,7 @@
 		B3EB060D20633C91000F68AE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = MSH;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = leo;
 				TargetAttributes = {
@@ -234,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3EB062520633C91000F68AE /* LaunchScreen.storyboard in Resources */,
+				7851C2EE2065FE56006C6655 /* MSHCollectionViewCell.xib in Resources */,
 				B3EB062220633C91000F68AE /* Assets.xcassets in Resources */,
 				B3EB062020633C91000F68AE /* Main.storyboard in Resources */,
 			);
@@ -248,14 +323,20 @@
 			files = (
 				B3EB061D20633C91000F68AE /* ViewController.m in Sources */,
 				B3EB06502065E8EB000F68AE /* MSHBaseHeroService.m in Sources */,
+				7851C3112066B523006C6655 /* MSHSearchView.m in Sources */,
 				B3EB063320633EEC000F68AE /* MSHHttpSessionManager.m in Sources */,
 				B3EB062820633C91000F68AE /* main.m in Sources */,
 				B3EB06602066799F000F68AE /* UIImageView+MSHCache.m in Sources */,
 				B3EB0657206611C5000F68AE /* MSHImageDownloadOperation.m in Sources */,
 				B3EB066320668145000F68AE /* MSHImageManager.m in Sources */,
+				7851C2ED2065FE56006C6655 /* MSHCollectionViewCell.m in Sources */,
 				B3EB063B20636834000F68AE /* MSHHero.m in Sources */,
 				B3EB06472064D330000F68AE /* MSHThumbnail.m in Sources */,
+				7851C304206643F4006C6655 /* MSHUtils.m in Sources */,
+				7851C30720668ACD006C6655 /* MSHLoadingView.m in Sources */,
 				B3EB064D2065E522000F68AE /* MSHEntity.m in Sources */,
+				7851C30A2066937C006C6655 /* MSHBaseViewController.m in Sources */,
+				7851C2FA20663AE9006C6655 /* MSHDetailController.m in Sources */,
 				B3EB061A20633C91000F68AE /* AppDelegate.m in Sources */,
 				B3EB063E2063689E000F68AE /* MSHMarvelHeroService.m in Sources */,
 				B3EB06442064A932000F68AE /* MSHModel.m in Sources */,
@@ -263,6 +344,8 @@
 				B3EB06542065FB7F000F68AE /* MSHImageCache.m in Sources */,
 				B3EB06412063F323000F68AE /* NSString+MD5.m in Sources */,
 				B3EB064A2064D6B5000F68AE /* MSHPageInfo.m in Sources */,
+				7851C2FD20663BBB006C6655 /* MSHDetailHeaderView.m in Sources */,
+				7851C30D206696C3006C6655 /* MSHHomepagePresenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +480,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XZB34ZWRFL;
+				GCC_PREFIX_HEADER = MarvelHeroes/MSHPrefixHeader.pch;
 				INFOPLIST_FILE = MarvelHeroes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = leoren.MarvelHeroes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -410,7 +496,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XZB34ZWRFL;
+				GCC_PREFIX_HEADER = MarvelHeroes/MSHPrefixHeader.pch;
 				INFOPLIST_FILE = MarvelHeroes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = leoren.MarvelHeroes;
 				PRODUCT_NAME = "$(TARGET_NAME)";

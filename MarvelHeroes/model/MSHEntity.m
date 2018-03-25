@@ -10,4 +10,11 @@
 
 @implementation MSHEntity
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    if ([key isEqualToString:@"description"]) {
+        self.desc = value;
+    }
+    [super setValue:value forUndefinedKey:key];
+}
+
 @end
