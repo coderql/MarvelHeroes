@@ -137,7 +137,7 @@ static CGFloat const kCellBottomAreaHeight = 53.f;
         [self.searchView endSearching];
     }
 //    MSHLog(@"scrollViewWillBeginDragging");
-    if (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) {
+    if (scrollView.contentOffset.y + scrollView.frame.size.height + ((MSH_iPhoneX)? 0.5f: 0) >= scrollView.contentSize.height) {
         if (self.searchView.searchActive) {
             if (!self.noMoreSearchData) {
                 [self loadMoreData];
