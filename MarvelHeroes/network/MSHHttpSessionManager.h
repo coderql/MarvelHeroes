@@ -27,8 +27,8 @@
  *
  * @return http get request session task.
  */
-- (NSURLSessionDataTask *)httpGet:(NSString *)path
-                       parameters:(NSDictionary *)parameters
-                          success:(void (^)(NSURLSessionDataTask * _Nonnull, NSData *))success
-                          failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError * _Nonnull))failure;
+- (nullable NSURLSessionDataTask *)httpGet:(nonnull NSString *)path
+                       parameters:(nullable NSDictionary *)parameters
+                          success:(void (_Nullable ^)(NSURLSessionDataTask * _Nonnull, NSData * _Nonnull))success
+                          failure:(void (_Nullable ^)(NSURLSessionDataTask * _Nonnull, NSError * _Nonnull))failure;
 @end

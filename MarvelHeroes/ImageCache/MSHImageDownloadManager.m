@@ -51,6 +51,7 @@
         operation = [[MSHImageDownloadOperation alloc] initWithRequest:request session:self.session];
         __weak typeof(self) wself = self;
         operation.completionBlock = ^ {
+            // remove current operations after request is finished.
             [wself.operations removeObjectForKey:url];
         };
         [self.operations setObject:operation forKey:url];

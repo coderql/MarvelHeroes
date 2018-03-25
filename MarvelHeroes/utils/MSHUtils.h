@@ -14,7 +14,9 @@
 + (CGFloat)heightOfText:(NSString *)text
         containderWidth:(CGFloat)containderWidth
                fontSize:(CGFloat)fontSize;
-
+/**
+ * quick method to check if string is nil or empty.
+ */
 + (BOOL)isEmptyString:(NSString *)string;
 
 @end

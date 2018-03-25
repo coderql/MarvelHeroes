@@ -32,8 +32,8 @@
 
 - (NSURLSessionDataTask *)httpGet:(NSString *)path
                    parameters:(NSDictionary *)parameters
-                      success:(void (^)(NSURLSessionDataTask * _Nonnull, NSData *))success
-                          failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError * _Nonnull))failure {
+                      success:(void (^)(NSURLSessionDataTask * _Nonnull, NSData * _Nonnull))success
+                          failure:(void (^)(NSURLSessionDataTask * _Nonnull, NSError * _Nonnull))failure {
     NSString *urlString = nil;
     if (self.baseURL != nil) {
         // if base URL is provided, the given path parameter is relative path.

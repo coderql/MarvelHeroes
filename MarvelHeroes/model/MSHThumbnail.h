@@ -11,4 +11,5 @@
 @interface MSHThumbnail : NSObject
 @property (nonatomic, copy) NSString *path;
 @property (nonatomic, copy) NSString *extension;
+@property (nonatomic, copy) NSString *variant;
 @end

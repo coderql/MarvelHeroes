@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (MD5)
+/** Get md5 of this string */
 - (NSString *)MD5;
 @end

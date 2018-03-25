@@ -31,4 +31,9 @@ static float const kDefaultHeight = 44.f;
 static int const kDataLimit = 20;
 static int const kEntityLimit = 3;
 
+#define AbstractMethodNotImplemented() \
+@throw [NSException exceptionWithName:NSInternalInconsistencyException \
+                               reason:[NSString stringWithFormat:@"You must override %@ in a subclass.", NSStringFromSelector(_cmd)] \
+                             userInfo:nil]
+
 #endif /* MSHMacros_h */

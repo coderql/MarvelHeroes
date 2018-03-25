@@ -17,7 +17,7 @@
 
 @implementation MSHDBManager
 
-+ (nonnull instancetype)manager {
++ (nullable instancetype)manager {
     static dispatch_once_t once;
     static id instance;
     dispatch_once(&once, ^{
@@ -26,12 +26,16 @@
     return instance;
 }
 
-- (instancetype)init
+- (nullable instancetype)init
 {
     self = [super init];
     if (self) {
         if ([self open]) {
-            [self initTable];
+            if ([self initTable]) {
+                MSHLog(@"init db talbe failed.");
+            }
+        } else {
+            MSHLog(@"db open failed.");
         }
     }
     return self;
@@ -40,17 +44,13 @@
 - (BOOL)open {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documents = [paths objectAtIndex:0];
-    NSString *databasePath = [documents stringByAppendingPathComponent:@"heroes"];
+    NSString *databasePath = [documents stringByAppendingPathComponent:@"heroes_db"];
     return sqlite3_open([databasePath UTF8String], &db) == SQLITE_OK;
 }
 
 - (BOOL)initTable {
     NSString *createSql = @"create table if not exists hero(hero_id integer)";
     return [self execute:createSql];
-}
-
-- (BOOL)execute:(NSString *)sql {
-    return sqlite3_exec(db, [sql UTF8String], nil, nil, nil) == SQLITE_OK;
 }
 
 - (BOOL)close {
@@ -67,7 +67,7 @@
     return [self execute:removeSql];
 }
 
-- (NSArray *)findFavoredHeroes:(NSArray *)heroIds {
+- (nonnull NSArray *)findFavoredHeroes:(nullable NSArray *)heroIds {
     NSMutableArray *favoredHeroIds = [NSMutableArray new];
     
     sqlite3_stmt *stmt;
@@ -81,6 +81,10 @@
     }
     sqlite3_finalize(stmt);
     return favoredHeroIds;
+}
+
+- (BOOL)execute:(NSString *)sql {
+    return sqlite3_exec(db, [sql UTF8String], nil, nil, nil) == SQLITE_OK;
 }
 
 @end

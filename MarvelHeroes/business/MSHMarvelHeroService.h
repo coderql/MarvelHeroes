@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "MSHBaseHeroService.h"
 
+/**
+ * Marvel API implementation for hero services.
+ */
 @interface MSHMarvelHeroService : MSHBaseHeroService
 @end
