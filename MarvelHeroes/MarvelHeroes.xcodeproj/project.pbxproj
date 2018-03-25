@@ -213,13 +213,13 @@
 			path = MarvelHeroes;
 			sourceTree = "<group>";
 		};
-		B3EB063020633EBD000F68AE /* network */ = {
+		B3EB063020633EBD000F68AE /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				B3EB066C2067F7C0000F68AE /* MSHHttpManager.h */,
 				B3EB066B2067F7BF000F68AE /* MSHHttpManager.m */,
 			);
-			path = network;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		B3EB063420636792000F68AE /* business */ = {
@@ -274,21 +274,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B3EB066720678917000F68AE /* database */ = {
+		B3EB066720678917000F68AE /* Database */ = {
 			isa = PBXGroup;
 			children = (
 				B3EB06682067893C000F68AE /* MSHDBManager.h */,
 				B3EB06692067893C000F68AE /* MSHDBManager.m */,
 			);
-			path = database;
+			path = Database;
 			sourceTree = "<group>";
 		};
 		B3EB066F20680607000F68AE /* Library */ = {
 			isa = PBXGroup;
 			children = (
 				B3EB06512065FB59000F68AE /* ImageCache */,
-				B3EB063020633EBD000F68AE /* network */,
-				B3EB066720678917000F68AE /* database */,
+				B3EB063020633EBD000F68AE /* Network */,
+				B3EB066720678917000F68AE /* Database */,
 			);
 			path = Library;
 			sourceTree = "<group>";

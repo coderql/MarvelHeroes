@@ -39,14 +39,14 @@
         return;
     }
     
-    __weak __typeof__ (self) wself = self;
+    __weak __typeof(self) weakSelf = self;
     // ignore progress of loading image, use completion handler directly.
     self.dataTask = [self.session dataTaskWithRequest:_request
                                     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        for (ImageDownloadCompleteBlock completeBlock in wself.completeBlockArray) {
+        for (ImageDownloadCompleteBlock completeBlock in weakSelf.completeBlockArray) {
             completeBlock(data, error);
         }
-        [wself done];
+        [weakSelf done];
     }];
     [self.dataTask resume];
     self.executing = YES;

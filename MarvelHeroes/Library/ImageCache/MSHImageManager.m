@@ -37,11 +37,11 @@
     if (imageData != nil) {
         completionBlock(imageData, nil);
     } else {
-        __weak __typeof(self) wself = self;
+        __weak __typeof(self) weakSelf = self;
         // if image is not stored in local cache(both memory and disk), download from server side.
         [self.downloadManager downloadImageWithURL:url completed:^(NSData * _Nullable data, NSError * _Nullable error) {
             // cache newly downloaded image data.
-            [wself.imageCache storeImage:data key:key];
+            [weakSelf.imageCache storeImage:data key:key];
             completionBlock(data, error);
         }];
     }
