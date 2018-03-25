@@ -17,6 +17,8 @@
 		7851C30D206696C3006C6655 /* MSHHomepagePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C30C206696C3006C6655 /* MSHHomepagePresenter.m */; };
 		7851C3112066B523006C6655 /* MSHSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C3102066B523006C6655 /* MSHSearchView.m */; };
 		7851C314206789BE006C6655 /* MSHHeroDetailPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C313206789BE006C6655 /* MSHHeroDetailPresenter.m */; };
+		7851C3182067B1B9006C6655 /* MSHTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C3172067B1B9006C6655 /* MSHTransition.m */; };
+		7851C31B2067C8DA006C6655 /* MSHNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C31A2067C8DA006C6655 /* MSHNavigationBar.m */; };
 		B3EB061A20633C91000F68AE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB061920633C91000F68AE /* AppDelegate.m */; };
 		B3EB061D20633C91000F68AE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB061C20633C91000F68AE /* ViewController.m */; };
 		B3EB062020633C91000F68AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EB061E20633C91000F68AE /* Main.storyboard */; };
@@ -65,6 +67,10 @@
 		7851C312206789BE006C6655 /* MSHHeroDetailPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHHeroDetailPresenter.h; sourceTree = "<group>"; };
 		7851C313206789BE006C6655 /* MSHHeroDetailPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHHeroDetailPresenter.m; sourceTree = "<group>"; };
 		7851C315206789D1006C6655 /* MSHHeroDetailProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHHeroDetailProtocol.h; sourceTree = "<group>"; };
+		7851C3162067B1B9006C6655 /* MSHTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHTransition.h; sourceTree = "<group>"; };
+		7851C3172067B1B9006C6655 /* MSHTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHTransition.m; sourceTree = "<group>"; };
+		7851C3192067C8DA006C6655 /* MSHNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHNavigationBar.h; sourceTree = "<group>"; };
+		7851C31A2067C8DA006C6655 /* MSHNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHNavigationBar.m; sourceTree = "<group>"; };
 		B3EB061520633C91000F68AE /* MarvelHeroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelHeroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EB061820633C91000F68AE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B3EB061920633C91000F68AE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -150,6 +156,8 @@
 				7851C30620668ACD006C6655 /* MSHLoadingView.m */,
 				7851C30F2066B522006C6655 /* MSHSearchView.h */,
 				7851C3102066B523006C6655 /* MSHSearchView.m */,
+				7851C3192067C8DA006C6655 /* MSHNavigationBar.h */,
+				7851C31A2067C8DA006C6655 /* MSHNavigationBar.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -160,6 +168,8 @@
 				7851C2F62066047D006C6655 /* MSHMacros.h */,
 				7851C302206643F4006C6655 /* MSHUtils.h */,
 				7851C303206643F4006C6655 /* MSHUtils.m */,
+				7851C3162067B1B9006C6655 /* MSHTransition.h */,
+				7851C3172067B1B9006C6655 /* MSHTransition.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -372,8 +382,10 @@
 				B3EB061A20633C91000F68AE /* AppDelegate.m in Sources */,
 				B3EB063E2063689E000F68AE /* MSHMarvelHeroService.m in Sources */,
 				B3EB066A2067893C000F68AE /* MSHDBManager.m in Sources */,
+				7851C31B2067C8DA006C6655 /* MSHNavigationBar.m in Sources */,
 				B3EB06442064A932000F68AE /* MSHModel.m in Sources */,
 				B3EB065D20662AD2000F68AE /* MSHImageDownloadManager.m in Sources */,
+				7851C3182067B1B9006C6655 /* MSHTransition.m in Sources */,
 				B3EB06542065FB7F000F68AE /* MSHImageCache.m in Sources */,
 				B3EB06412063F323000F68AE /* NSString+MD5.m in Sources */,
 				7851C314206789BE006C6655 /* MSHHeroDetailPresenter.m in Sources */,

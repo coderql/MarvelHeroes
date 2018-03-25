@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MSHHero;
 
 @interface MSHCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *favorImageView;
+@property (nonatomic, strong) MSHHero *hero;
 @end

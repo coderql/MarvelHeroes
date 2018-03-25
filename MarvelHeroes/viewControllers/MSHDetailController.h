@@ -9,6 +9,12 @@
 #import "MSHBaseViewController.h"
 @class MSHHero;
 
+@protocol MSHDetailControllerDelegate <NSObject>
+- (void)heroChanged:(MSHHero *)hero;
+@end
+
 @interface MSHDetailController : MSHBaseViewController
 @property (nonatomic, strong) MSHHero *selectedHero;
+@property (nonatomic, strong) UIImage *heroImage;
+@property (nonatomic, weak) id<MSHDetailControllerDelegate> detailVCDelegate;
 @end

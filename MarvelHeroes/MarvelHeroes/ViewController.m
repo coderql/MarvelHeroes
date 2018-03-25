@@ -13,25 +13,26 @@
 #import "MSHDetailController.h"
 #import "MSHHomepagePresenter.h"
 #import "MSHSearchView.h"
-#import "UIImageView+MSHCache.h"
+#import "MSHTransition.h"
 
 static NSString *const kCellIdentifier = @"mainCell";
 static CGFloat const kCellSpace = 10.f;
 static CGFloat const kCellBottomAreaHeight = 53.f;
 
-@interface ViewController () <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, MSHHomepageProtocol, MSHSearchViewDelegate>
+@interface ViewController () <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, MSHHomepageProtocol, MSHSearchViewDelegate, UIViewControllerTransitioningDelegate, MSHDetailControllerDelegate>
 {
     CGFloat cellWidth;
 }
 @property (nonatomic, strong) UICollectionView *mainCollectionView;
 @property (nonatomic, strong) NSMutableArray <MSHHero *> *heroArray;
 @property (nonatomic, strong) NSMutableArray <MSHHero *> *searchResultArray;
-//@property (nonatomic, strong) MSHPageInfo *currentPageInfo;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) MSHHomepagePresenter *presenter;
 @property (nonatomic, assign) BOOL noMoreData;
 @property (nonatomic, assign) BOOL noMoreSearchData;
 @property (nonatomic, strong) MSHSearchView *searchView;
+@property (nonatomic, strong) MSHTransition *transition;
+@property (nonatomic, strong) UIImageView *selectedImageView;
 @end
 
 @implementation ViewController
@@ -43,6 +44,7 @@ static CGFloat const kCellBottomAreaHeight = 53.f;
     [self setupCollectionView];
 //    [self loadHeroList];
     [self setupRefresh];
+    [self setupTransition];
 }
 
 - (NSMutableArray<MSHHero *> *)heroArray {
@@ -93,11 +95,19 @@ static CGFloat const kCellBottomAreaHeight = 53.f;
     [self refreshStateChange:self.refreshControl];
 }
 
+- (void)setupTransition {
+    _transition = [[MSHTransition alloc] init];
+    __weak __typeof(self) weakSelf = self;
+    _transition.dismissCompletion = ^{
+        weakSelf.selectedImageView.hidden = NO;
+    };
+}
+
 - (void)refreshStateChange:(UIRefreshControl *)control {
     self.noMoreData = NO;
     self.noMoreSearchData = NO;
     if (self.searchView.searchActive) {
-        [self.presenter searchWithText:self.searchView.searchTextField.text];
+        [self beginSearchText:self.searchView.searchTextField.text];
     } else {
         [self.presenter loadFirstPage];
     }
@@ -110,6 +120,15 @@ static CGFloat const kCellBottomAreaHeight = 53.f;
     } else {
         [self.presenter loadNextPageWithOffset:(int)self.heroArray.count];
     }
+}
+
+- (void)beginSearchText:(NSString *)text {
+    NSString *destText = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if ([MSHUtils isEmptyString:destText]) {
+        [self hideProgress];
+        return;
+    }
+    [self.presenter searchWithText:text];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -131,16 +150,24 @@ static CGFloat const kCellBottomAreaHeight = 53.f;
     }
 }
 
+#pragma mark - MSHDetailControllerDelegate
+- (void)heroChanged:(MSHHero *)hero {
+    NSInteger index = self.searchView.searchActive? [self.searchResultArray indexOfObject:hero]: [self.heroArray indexOfObject:hero];
+    [self.mainCollectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
+}
+
 #pragma mark - MSHSearchViewDelegate
 - (void)searchView:(UIView *)searchView didEndEditing:(NSString *)text {
     [self showProgress];
     self.noMoreSearchData = NO;
-    [self.presenter searchWithText:text];
+    [self beginSearchText:text];
 }
 
 - (void)searchView:(UIView *)searchView cancelButtonClicked:(UIButton *)button {
     self.noMoreSearchData = NO;
-    [self.mainCollectionView reloadData];
+    [self.refreshControl beginRefreshing];
+    [self refreshStateChange:self.refreshControl];
+//    [self.mainCollectionView reloadData];
 }
 
 #pragma mark - MSHHomepageProtocol
@@ -201,10 +228,9 @@ static CGFloat const kCellBottomAreaHeight = 53.f;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MSHCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor lightGrayColor];
+    cell.backgroundColor = [UIColor whiteColor];
     MSHHero *hero = (self.searchView.searchActive)? self.searchResultArray[indexPath.item]: self.heroArray[indexPath.item];
-    cell.favorImageView.image = [UIImage imageNamed:@"favorite_selected"];
-    cell.nameLabel.text = hero.name;
+    cell.hero = hero;
     [cell.mainImageView setImageUrl:[NSURL URLWithString:[self.presenter getImageUrlWithThumbnail:hero.thumbnail]] placeholder:nil];
 //    cell.nameLabel.text = [NSString stringWithFormat:@"%d", (int)indexPath.item + 1];
     return cell;
@@ -217,9 +243,27 @@ static CGFloat const kCellBottomAreaHeight = 53.f;
 
 #pragma mark -- UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    MSHCollectionViewCell *cell = (MSHCollectionViewCell *)[self.mainCollectionView cellForItemAtIndexPath:indexPath];
+    self.selectedImageView = cell.mainImageView;
     MSHDetailController *detailController = [MSHDetailController new];
-    detailController.selectedHero = self.heroArray[indexPath.item];
-    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:detailController] animated:YES completion:nil];
+    detailController.selectedHero = (self.searchView.searchActive)? self.searchResultArray[indexPath.item]: self.heroArray[indexPath.item];
+    detailController.heroImage = cell.mainImageView.image;
+    detailController.detailVCDelegate = self;
+    detailController.transitioningDelegate = self;
+    [self presentViewController:detailController animated:YES completion:nil];
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    self.transition.originFrame = [self.selectedImageView.superview convertRect:self.selectedImageView.frame toView:nil];
+    self.transition.presenting = YES;
+    self.selectedImageView.hidden = YES;
+    return self.transition;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    self.transition.presenting = NO;
+    return self.transition;
 }
 
 - (void)didReceiveMemoryWarning {

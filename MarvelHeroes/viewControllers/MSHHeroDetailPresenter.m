@@ -65,4 +65,17 @@
     }];
 }
 
+- (NSString *)getImageUrlWithThumbnail:(MSHThumbnail *)thumbnail {
+    return [self.webService getHeroThumbnailURL:thumbnail imageParam:@{@"variant": @"portrait_uncanny"}];
+}
+
+- (void)favorHero:(BOOL)isFavor heroId:(int)heroId {
+    BOOL result = isFavor? [self.webService favor:heroId]: [self.webService unfavor:heroId];
+    if (result) {
+        [self.view favorCompleted:nil];
+    } else {
+        [self.view favorCompleted:[[NSError alloc] initWithDomain:@"com.MSH" code:-1 userInfo:nil]];
+    }
+}
+
 @end

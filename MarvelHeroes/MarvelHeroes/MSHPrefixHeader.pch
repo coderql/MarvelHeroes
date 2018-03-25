@@ -14,6 +14,7 @@
 
 #import "MSHMacros.h"
 #import "MSHUtils.h"
+#import "UIImageView+MSHCache.h"
 
 #ifdef DEBUG
 #define MSHLog(...) NSLog(__VA_ARGS__)

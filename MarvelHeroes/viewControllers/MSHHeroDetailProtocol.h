@@ -22,4 +22,6 @@
 - (void)getSeriesSuccess:(NSArray *)series;
 - (void)getSeriesFailure:(NSError *)error;
 
+- (void)favorCompleted:(NSError *)error;
+
 @end

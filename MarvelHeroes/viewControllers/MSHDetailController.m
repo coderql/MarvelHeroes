@@ -11,6 +11,7 @@
 #import "MSHDetailHeaderView.h"
 #import "MSHHeroDetailPresenter.h"
 #import "MSHEntity.h"
+#import "MSHNavigationBar.h"
 
 static NSString *const kInfoCellIdentifier = @"infoCell";
 static NSString *const kEntityComic = @"comic";
@@ -18,31 +19,23 @@ static NSString *const kEntityEvent = @"event";
 static NSString *const kEntityStory = @"story";
 static NSString *const kEntitySeries = @"series";
 
-@interface MSHDetailController () <UITableViewDelegate, UITableViewDataSource, MSHHeroDetailProtocol>
+@interface MSHDetailController () <UITableViewDelegate, UITableViewDataSource, MSHHeroDetailProtocol, UIViewControllerTransitioningDelegate>
 {
-//    CGFloat headerViewHeight;
     NSArray *entities;
 }
 @property (nonatomic, strong) UITableView *infoTableView;
 @property (nonatomic, strong) MSHDetailHeaderView *headerView;
 @property (nonatomic, strong) MSHHeroDetailPresenter *presenter;
 @property (nonatomic, strong) NSMutableDictionary *infoDict;
+@property (nonatomic, strong) MSHNavigationBar *navigationBar;
 @end
 
 @implementation MSHDetailController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.view.backgroundColor = kBackgroundColor;
-    self.navigationItem.title = self.selectedHero.name;
     [self setupNavigationBar];
-//    headerViewHeight = SCREEN_WIDTH / kHeroImageRatio + 53.f + 60.f;
     entities = @[@"comics", @"events", @"stories", @"series"];
     [self setupTableView];
     _presenter = [[MSHHeroDetailPresenter alloc] initWithView:self];
@@ -50,11 +43,6 @@ static NSString *const kEntitySeries = @"series";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
     [self showProgress];
     dispatch_group_t group = dispatch_group_create();
     NSArray *selStrArray = @[@"getComicsWithHeroId:", @"getEventsWithHeroId:", @"getStoriesWithHeroId:", @"getSeriesWithHeroId:"];
@@ -70,12 +58,18 @@ static NSString *const kEntitySeries = @"series";
 }
 
 - (void)setupNavigationBar {
-    UIImageView *backImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back"]];
-    backImageView.frame = CGRectMake(0, 0, kDefaultHeight, kDefaultHeight);
-    backImageView.contentMode = UIViewContentModeLeft;
-    backImageView.userInteractionEnabled = YES;
-    [backImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)]];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backImageView];
+    _navigationBar = [[MSHNavigationBar alloc] initWithFrame:CGRectMake(0, MSH_StatusBarHeight, SCREEN_WIDTH, kDefaultHeight)];
+    _navigationBar.titleLabel.text = self.selectedHero.name;
+    __weak __typeof(self) weakSelf = self;
+    _navigationBar.backHandler = ^{
+        weakSelf.navigationBar.hidden = YES;
+        CGRect finalFrame = weakSelf.infoTableView.frame;
+        finalFrame.origin.y -= MSH_StatusBarAndNavigationBarHeight;
+        finalFrame.size.height += MSH_StatusBarAndNavigationBarHeight;
+        weakSelf.infoTableView.frame = finalFrame;
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    };
+    [self.view addSubview:self.navigationBar];
 }
 
 - (void)setupTableView {
@@ -90,6 +84,11 @@ static NSString *const kEntitySeries = @"series";
     if (_headerView == nil) {
         _headerView = [[MSHDetailHeaderView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.infoTableView.frame), 0)];
         _headerView.hero = self.selectedHero;
+        _headerView.heroImageView.image = self.heroImage;
+        __weak __typeof(self) weakSelf = self;
+        _headerView.favorHandler = ^(int heroId, BOOL isFavor) {
+            [weakSelf.presenter favorHero:isFavor heroId:heroId];
+        };
     }
     return _headerView;
 }
@@ -102,11 +101,6 @@ static NSString *const kEntitySeries = @"series";
         }
     }
     return _infoDict;
-}
-
-#pragma mark - methods
-- (void)dismiss {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - MSHHeroDetailProtocol
@@ -144,6 +138,18 @@ static NSString *const kEntitySeries = @"series";
 
 - (void)getSeriesFailure:(NSError *)error {
     NSLog(@"%@: %@", NSStringFromSelector(_cmd), error);
+}
+
+- (void)favorCompleted:(NSError *)error {
+    if (error == nil) {
+        self.selectedHero.isFavorite = !self.selectedHero.isFavorite;
+        [self.headerView updateFavorImageView];
+        if (self.detailVCDelegate && [self.detailVCDelegate respondsToSelector:@selector(heroChanged:)]) {
+            [self.detailVCDelegate heroChanged:self.selectedHero];
+        }
+    } else {
+        NSLog(@"favor error = %@", error);
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -186,7 +192,7 @@ static NSString *const kEntitySeries = @"series";
 //    return CGRectGetHeight(cell.textLabel.frame) + CGRectGetHeight(cell.detailTextLabel.frame);
     NSMutableArray *subArray = [self.infoDict objectForKey:entities[indexPath.section]];
     MSHEntity *entity = subArray[indexPath.row];
-    return [MSHUtils heightOfText:entity.title containderWidth:SCREEN_WIDTH - 2 * 16 fontSize:16.f] + [MSHUtils heightOfText:entity.desc containderWidth:SCREEN_WIDTH - 2 * 16 fontSize:13.0f] + 16;
+    return [MSHUtils heightOfText:entity.title containerWidth:SCREEN_WIDTH - 2 * 16 fontSize:16.f] + [MSHUtils heightOfText:entity.desc containerWidth:SCREEN_WIDTH - 2 * 16 fontSize:13.0f] + 16;
 }
 
 - (void)dealloc {

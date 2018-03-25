@@ -12,7 +12,7 @@
 @interface MSHUtils : NSObject
 
 + (CGFloat)heightOfText:(NSString *)text
-        containderWidth:(CGFloat)containderWidth
+         containerWidth:(CGFloat)containerWidth
                fontSize:(CGFloat)fontSize;
 
 + (BOOL)isEmptyString:(NSString *)string;

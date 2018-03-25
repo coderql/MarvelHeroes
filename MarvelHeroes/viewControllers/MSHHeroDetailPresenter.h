@@ -15,4 +15,5 @@
 - (void)getEventsWithHeroId:(NSNumber *)heroId;
 - (void)getStoriesWithHeroId:(NSNumber *)heroId;
 - (void)getSeriesWithHeroId:(NSNumber *)heroId;
+- (void)favorHero:(BOOL)isFavor heroId:(int)heroId;
 @end

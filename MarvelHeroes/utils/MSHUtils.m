@@ -11,13 +11,13 @@
 @implementation MSHUtils
 
 + (CGFloat)heightOfText:(NSString *)text
-        containderWidth:(CGFloat)containderWidth
+         containerWidth:(CGFloat)containerWidth
                fontSize:(CGFloat)fontSize {
     if ([self isEmptyString:text]) {
         return 0.f;
     }
     NSDictionary *dict = @{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]};
-    CGRect frame = [text boundingRectWithSize:CGSizeMake(containderWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin  | NSStringDrawingUsesFontLeading  attributes:dict context:nil];
+    CGRect frame = [text boundingRectWithSize:CGSizeMake(containerWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin  | NSStringDrawingUsesFontLeading  attributes:dict context:nil];
     return frame.size.height;
 }
 
