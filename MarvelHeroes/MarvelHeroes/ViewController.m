@@ -13,6 +13,7 @@
 #import "MSHDetailController.h"
 #import "MSHHomepagePresenter.h"
 #import "MSHSearchView.h"
+#import "UIImageView+MSHCache.h"
 
 static NSString *const kCellIdentifier = @"mainCell";
 static CGFloat const kCellSpace = 10.f;
@@ -204,6 +205,7 @@ static CGFloat const kCellBottomAreaHeight = 53.f;
     MSHHero *hero = (self.searchView.searchActive)? self.searchResultArray[indexPath.item]: self.heroArray[indexPath.item];
     cell.favorImageView.image = [UIImage imageNamed:@"favorite_selected"];
     cell.nameLabel.text = hero.name;
+    [cell.mainImageView setImageUrl:[NSURL URLWithString:[self.presenter getImageUrlWithThumbnail:hero.thumbnail]] placeholder:nil];
 //    cell.nameLabel.text = [NSString stringWithFormat:@"%d", (int)indexPath.item + 1];
     return cell;
 }

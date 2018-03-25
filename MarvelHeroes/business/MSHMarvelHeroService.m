@@ -19,6 +19,10 @@ NSString * const MarvelBasePath = @"https://gateway.marvel.com/v1/public/";
 
 @implementation MSHMarvelHeroService
 
+- (NSString *)getHeroThumbnailURL:(MSHThumbnail *)thumbnail imageParam:(NSDictionary *)imageParam {
+    return [NSString stringWithFormat:@"%@/%@.%@", thumbnail.path, [imageParam objectForKey:@"variant"], thumbnail.extension];
+}
+
 - (void)getHeroesOffset:(int)offset limit:(int)limit nameStartsWith:(NSString *)startName resultHandler:(MSHResultHandler)handler {
     NSMutableDictionary *parameters = [NSMutableDictionary new];
     [parameters setObject:[NSNumber numberWithInt:offset] forKey:@"offset"];
@@ -127,4 +131,6 @@ NSString * const MarvelBasePath = @"https://gateway.marvel.com/v1/public/";
 - (NSString *)getHashParam:(NSString *)ts {
     return [[NSString stringWithFormat:@"%@%@%@", ts, MarvelPrivateKey, MarvelPublicKey] MD5];
 }
+
+
 @end

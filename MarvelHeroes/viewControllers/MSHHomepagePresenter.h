@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MSHHomepageProtocol.h"
+#import "MSHThumbnail.h"
 
 @interface MSHHomepagePresenter : NSObject
 - (instancetype)initWithView:(id<MSHHomepageProtocol>)view;
@@ -15,4 +16,5 @@
 - (void)loadNextPageWithOffset:(int)offset;
 - (void)searchWithText:(NSString *)searchText;
 - (void)searchMoreWithText:(NSString *)searchText offset:(int)offset;
+- (NSString *)getImageUrlWithThumbnail:(MSHThumbnail *)thumbnail;
 @end

@@ -27,6 +27,8 @@
         _request = [request copy];
         _executing = NO;
         _finished = NO;
+        _session = session;
+        _completeBlockArray = [NSMutableArray new];
     }
     return self;
 }
@@ -42,6 +44,7 @@
         for (ImageDownloadCompleteBlock completeBlock in wself.completeBlockArray) {
             completeBlock(data, error);
         }
+        [self done];
     }];
     [self.dataTask resume];
     self.executing = YES;

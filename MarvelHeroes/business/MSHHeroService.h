@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class MSHThumbnail;
 
 typedef void (^MSHResultHandler)(id responseObject, NSError *error);
 
@@ -37,9 +38,12 @@ typedef void (^MSHResultHandler)(id responseObject, NSError *error);
                   limit:(int)limit
           resultHandler:(MSHResultHandler)handler;
 
-- (void)favor:(int)heroId;
+- (NSString *)getHeroThumbnailURL:(MSHThumbnail *)thumbnail
+                       imageParam:(NSDictionary *)imageParam;
 
-- (void)unfavor:(int)heroId;
+- (BOOL)favor:(int)heroId;
 
-- (BOOL)isFavorite:(int)heroId;
+- (BOOL)unfavor:(int)heroId;
+
+- (NSArray*)favoredHeros:(NSArray *)heroIds;
 @end

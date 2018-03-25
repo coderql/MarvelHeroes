@@ -7,11 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+
+/** Callback block for image download completion */
 typedef void(^ImageDownloadCompleteBlock)(NSData * _Nullable data, NSError * _Nullable error);
 
+/**
+ * Handles concurrent image download.
+ */
 @interface MSHImageDownloadManager : NSObject
 + (nonnull instancetype)sharedInstance;
+/**
+ * Enqueue image download operation.
+ *
+ * @param url image download url
+ * @param completeBlock image download completion block
+ */
 - (void)downloadImageWithURL:(nullable NSURL *)url
                    completed:(nullable ImageDownloadCompleteBlock)completeBlock;
-- (void)setMaxConcurrentDownloads:(NSInteger)maxDownloads;
 @end
