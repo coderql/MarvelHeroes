@@ -29,5 +29,6 @@
 
 static float const kDefaultHeight = 44.f;
 static int const kDataLimit = 20;
+static int const kEntityLimit = 3;
 
 #endif /* MSHMacros_h */

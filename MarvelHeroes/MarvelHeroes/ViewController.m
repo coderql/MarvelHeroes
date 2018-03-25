@@ -46,14 +46,14 @@ static CGFloat const kCellBottomAreaHeight = 53.f;
 
 - (NSMutableArray<MSHHero *> *)heroArray {
     if (_heroArray == nil) {
-        _heroArray = [NSMutableArray array];
+        _heroArray = [NSMutableArray new];
     }
     return _heroArray;
 }
 
 - (NSMutableArray<MSHHero *> *)searchResultArray {
     if (_searchResultArray == nil) {
-        _searchResultArray = [NSMutableArray array];
+        _searchResultArray = [NSMutableArray new];
     }
     return _searchResultArray;
 }
@@ -215,7 +215,7 @@ static CGFloat const kCellBottomAreaHeight = 53.f;
 
 #pragma mark -- UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    MSHDetailController *detailController = [[MSHDetailController alloc] init];
+    MSHDetailController *detailController = [MSHDetailController new];
     detailController.selectedHero = self.heroArray[indexPath.item];
     [self presentViewController:[[UINavigationController alloc] initWithRootViewController:detailController] animated:YES completion:nil];
 }

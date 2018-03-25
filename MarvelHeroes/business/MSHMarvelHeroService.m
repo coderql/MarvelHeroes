@@ -73,8 +73,9 @@ NSString * const MarvelBasePath = @"https://gateway.marvel.com/v1/public/";
                          NSMutableArray *entityArray = [NSMutableArray new];
                          for (NSDictionary * entityDic in results) {
                              MSHEntity *entity = [MSHEntity new];
-                             entity.title = entityDic[@"title"];
-                             entity.desc = entityDic[@"description"];
+//                             entity.title = entityDic[@"title"];
+//                             entity.desc = entityDic[@"description"];
+                             [entity setValuesForKeysWithDictionary:entityDic];
                              [entityArray addObject:entity];
                          }
                          return entityArray;

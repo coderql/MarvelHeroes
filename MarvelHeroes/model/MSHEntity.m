@@ -14,7 +14,11 @@
     if ([key isEqualToString:@"description"]) {
         self.desc = value;
     }
-    [super setValue:value forUndefinedKey:key];
+//    [super setValue:value forUndefinedKey:key];
+}
+
+- (void)setNilValueForKey:(NSString *)key {
+    NSLog(@"key = %@", key);
 }
 
 @end

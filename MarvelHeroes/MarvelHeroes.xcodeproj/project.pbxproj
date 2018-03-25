@@ -16,6 +16,7 @@
 		7851C30A2066937C006C6655 /* MSHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C3092066937C006C6655 /* MSHBaseViewController.m */; };
 		7851C30D206696C3006C6655 /* MSHHomepagePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C30C206696C3006C6655 /* MSHHomepagePresenter.m */; };
 		7851C3112066B523006C6655 /* MSHSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C3102066B523006C6655 /* MSHSearchView.m */; };
+		7851C314206789BE006C6655 /* MSHHeroDetailPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851C313206789BE006C6655 /* MSHHeroDetailPresenter.m */; };
 		B3EB061A20633C91000F68AE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB061920633C91000F68AE /* AppDelegate.m */; };
 		B3EB061D20633C91000F68AE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB061C20633C91000F68AE /* ViewController.m */; };
 		B3EB062020633C91000F68AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EB061E20633C91000F68AE /* Main.storyboard */; };
@@ -59,6 +60,9 @@
 		7851C30E206696D8006C6655 /* MSHHomepageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHHomepageProtocol.h; sourceTree = "<group>"; };
 		7851C30F2066B522006C6655 /* MSHSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHSearchView.h; sourceTree = "<group>"; };
 		7851C3102066B523006C6655 /* MSHSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHSearchView.m; sourceTree = "<group>"; };
+		7851C312206789BE006C6655 /* MSHHeroDetailPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHHeroDetailPresenter.h; sourceTree = "<group>"; };
+		7851C313206789BE006C6655 /* MSHHeroDetailPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHHeroDetailPresenter.m; sourceTree = "<group>"; };
+		7851C315206789D1006C6655 /* MSHHeroDetailProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHHeroDetailProtocol.h; sourceTree = "<group>"; };
 		B3EB061520633C91000F68AE /* MarvelHeroes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelHeroes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3EB061820633C91000F68AE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B3EB061920633C91000F68AE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -121,6 +125,9 @@
 				7851C30B206696C3006C6655 /* MSHHomepagePresenter.h */,
 				7851C30C206696C3006C6655 /* MSHHomepagePresenter.m */,
 				7851C30E206696D8006C6655 /* MSHHomepageProtocol.h */,
+				7851C312206789BE006C6655 /* MSHHeroDetailPresenter.h */,
+				7851C313206789BE006C6655 /* MSHHeroDetailPresenter.m */,
+				7851C315206789D1006C6655 /* MSHHeroDetailProtocol.h */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -343,6 +350,7 @@
 				B3EB065D20662AD2000F68AE /* MSHImageDownloadManager.m in Sources */,
 				B3EB06542065FB7F000F68AE /* MSHImageCache.m in Sources */,
 				B3EB06412063F323000F68AE /* NSString+MD5.m in Sources */,
+				7851C314206789BE006C6655 /* MSHHeroDetailPresenter.m in Sources */,
 				B3EB064A2064D6B5000F68AE /* MSHPageInfo.m in Sources */,
 				7851C2FD20663BBB006C6655 /* MSHDetailHeaderView.m in Sources */,
 				7851C30D206696C3006C6655 /* MSHHomepagePresenter.m in Sources */,
