@@ -7,7 +7,7 @@
 //
 
 #import "MSHMarvelHeroService.h"
-#import "MSHHttpSessionManager.h"
+#import "MSHHttpManager.h"
 #import "NSString+MD5.h"
 #import "MSHPageInfo.h"
 #import "MSHHero.h"
@@ -111,7 +111,7 @@ NSString * const kStoriesContextPath = @"stories";
     [parameters addEntriesFromDictionary:extraParam];
     
     NSString *requestPath = [NSString stringWithFormat:@"%@%@", MarvelBasePath, contextPath];
-    [[MSHHttpSessionManager manager] httpGet:requestPath parameters:parameters success:^(NSURLSessionDataTask *task, NSData *data) {
+    [[MSHHttpManager manager] httpGet:requestPath parameters:parameters success:^(NSURLSessionDataTask *task, NSData *data) {
         NSDictionary *jsonObject = (NSDictionary *) [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
         int code = [[jsonObject objectForKey:@"code"] intValue];
         NSString *status = [jsonObject objectForKey:@"status"];

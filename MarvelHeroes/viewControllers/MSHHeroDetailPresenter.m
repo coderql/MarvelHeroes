@@ -12,7 +12,7 @@
 
 @interface MSHHeroDetailPresenter()
 @property (nonatomic, weak) id<MSHHeroDetailProtocol> view;
-@property (nonatomic, strong) MSHMarvelHeroService *webService;
+@property (nonatomic, strong) MSHMarvelHeroService *heroService;
 @end
 
 @implementation MSHHeroDetailPresenter
@@ -20,13 +20,13 @@
 - (instancetype)initWithView:(id<MSHHeroDetailProtocol>)view {
     if (self = [super init]) {
         _view = view;
-        _webService = [[MSHMarvelHeroService alloc] init];
+        _heroService = [[MSHMarvelHeroService alloc] init];
     }
     return self;
 }
 
 - (void)getComicsWithHeroId:(NSNumber *)heroId {
-    [self.webService getComicsOfHero:[heroId intValue] offset:0 limit:kEntityLimit resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
+    [self.heroService getComicsOfHero:[heroId intValue] offset:0 limit:kEntityLimit resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
         if (responseObject) {
             [self.view getComicsSuccess:responseObject.data];
         } else {
@@ -36,7 +36,7 @@
 }
 
 - (void)getEventsWithHeroId:(NSNumber *)heroId {
-    [self.webService getEventsOfHero:[heroId intValue] offset:0 limit:kEntityLimit resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
+    [self.heroService getEventsOfHero:[heroId intValue] offset:0 limit:kEntityLimit resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
         if (responseObject) {
             [self.view getEventsSuccess:responseObject.data];
         } else {
@@ -46,7 +46,7 @@
 }
 
 - (void)getStoriesWithHeroId:(NSNumber *)heroId {
-    [self.webService getStoriesOfHero:[heroId intValue] offset:0 limit:kEntityLimit resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
+    [self.heroService getStoriesOfHero:[heroId intValue] offset:0 limit:kEntityLimit resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
         if (responseObject) {
             [self.view getStoriesSuccess:responseObject.data];
         } else {
@@ -56,7 +56,7 @@
 }
 
 - (void)getSeriesWithHeroId:(NSNumber *)heroId {
-    [self.webService getSeriesOfHero:[heroId intValue] offset:0 limit:kEntityLimit resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
+    [self.heroService getSeriesOfHero:[heroId intValue] offset:0 limit:kEntityLimit resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
         if (responseObject) {
             [self.view getSeriesSuccess:responseObject.data];
         } else {
@@ -66,15 +66,26 @@
 }
 
 - (NSString *)getImageUrlWithThumbnail:(MSHThumbnail *)thumbnail {
-    return [self.webService getHeroThumbnailURL:thumbnail imageParam:@{@"variant": @"portrait_uncanny"}];
+    return [self.heroService getHeroThumbnailURL:thumbnail];
 }
 
 - (void)favorHero:(BOOL)isFavor heroId:(int)heroId {
-    BOOL result = isFavor? [self.webService favor:heroId]: [self.webService unfavor:heroId];
-    if (result) {
-        [self.view favorCompleted:nil];
+    if (isFavor) {
+        [self.heroService favorHero:heroId resultHandler:^(id responseObject, NSError *error) {
+            if ([responseObject boolValue]) {
+                [self.view favorCompleted:nil];
+            } else {
+                [self.view favorCompleted:[[NSError alloc] initWithDomain:@"com.MSH" code:-1 userInfo:nil]];
+            }
+        }];
     } else {
-        [self.view favorCompleted:[[NSError alloc] initWithDomain:@"com.MSH" code:-1 userInfo:nil]];
+        [self.heroService unfavorHero:heroId resultHandler:^(id responseObject, NSError *error) {
+            if ([responseObject boolValue]) {
+                [self.view favorCompleted:nil];
+            } else {
+                [self.view favorCompleted:[[NSError alloc] initWithDomain:@"com.MSH" code:-1 userInfo:nil]];
+            }
+        }];
     }
 }
 

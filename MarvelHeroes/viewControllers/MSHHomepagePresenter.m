@@ -33,8 +33,10 @@
                       nameStartsWith:nil
                        resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
                            if (responseObject) {
-                               responseObject.data = [self handleResults:responseObject.data];
-                               [self.view loadSuccess:responseObject isFirstPage:loadFirstPage noMoreData:(responseObject.offset + responseObject.count >= responseObject.total)];
+                               [self handleResults:responseObject.data complete:^(NSArray * array) {
+                                   responseObject.data = array;
+                                   [self.view loadSuccess:responseObject isFirstPage:loadFirstPage noMoreData:(responseObject.offset + responseObject.count >= responseObject.total)];
+                               }];
                            } else {
                                [self.view loadFailure:error isFirstPage:loadFirstPage];
                            }
@@ -49,31 +51,32 @@
                       nameStartsWith:text
                        resultHandler:^(MSHPageInfo *responseObject, NSError *error) {
                            if (responseObject) {
-                               responseObject.data = [self handleResults:responseObject.data];
-                               [self.view searchSuccess:responseObject isFirstPage:loadFirstPage noMoreData:(responseObject.offset + responseObject.count >= responseObject.total)];
+                               [self handleResults:responseObject.data complete:^(NSArray * array) {
+                                   responseObject.data = array;
+                                   [self.view searchSuccess:responseObject isFirstPage:loadFirstPage noMoreData:(responseObject.offset + responseObject.count >= responseObject.total)];
+                               }];
                            } else {
                                [self.view searchFailure:error isFirstPage:loadFirstPage];
                            }
                        }];
 }
 
-- (NSArray *)handleResults:(NSArray *)results {
+- (void)handleResults:(NSArray *)results complete:(void(^)(NSArray *))completeBlock {
     if ((results == nil) || (results.count <= 0)) {
-        return results;
+        completeBlock(results);
+        return;
     }
     NSMutableArray *heroIds = [[NSMutableArray alloc] initWithCapacity:results.count];
     for(MSHHero *hero in results) {
         [heroIds addObject:@(hero.heroId)];
     }
-    NSArray *favorResult = [self.webService favoredHeros:[heroIds copy]];
-    for(MSHHero *hero in results) {
-        hero.isFavorite = [favorResult containsObject:@(hero.heroId)];
-    }
-//    [favorResult enumerateObjectsUsingBlock:^(NSNumber   * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        ((MSHHero *)results[idx]).isFavorite = [obj intValue];
-//        results indexOfObject:<#(nonnull id)#>
-//    }];
-    return results;
+    [self.webService favoredHeros:[heroIds copy] resultHandler:^(id responseObject, NSError * error) {
+        NSArray *favorResult = (NSArray *) responseObject;
+        for(MSHHero *hero in results) {
+            hero.isFavorite = [favorResult containsObject:@(hero.heroId)];
+        }
+        completeBlock(results);
+    }];
 }
 
 - (void)loadFirstPage {
@@ -93,7 +96,8 @@
 }
 
 - (NSString *)getImageUrlWithThumbnail:(MSHThumbnail *)thumbnail {
-    return [self.webService getHeroThumbnailURL:thumbnail imageParam:@{@"variant": @"portrait_uncanny"}];
+    thumbnail.variant = @"portrait_uncanny";
+    return [self.webService getHeroThumbnailURL:thumbnail];
 }
 
 @end

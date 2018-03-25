@@ -1,5 +1,5 @@
 //
-//  MSHHttpSessionManager.h
+//  MSHHttpManager.h
 //  MarvelHeroes
 //
 //  Created by Leo on 2018/3/22.
@@ -12,7 +12,7 @@
  * This class encapsulates http requests. For simplicity, only support HTTP GET.
  *
  */
-@interface MSHHttpSessionManager : NSObject
+@interface MSHHttpManager : NSObject
 @property (nonatomic, strong) NSURLSession * _Nonnull session;
 @property (readonly, nonatomic, strong, nullable) NSURL *baseURL;
 
@@ -29,6 +29,6 @@
  */
 - (nullable NSURLSessionDataTask *)httpGet:(nonnull NSString *)path
                        parameters:(nullable NSDictionary *)parameters
-                          success:(void (_Nullable ^)(NSURLSessionDataTask * _Nonnull, NSData * _Nonnull))success
-                          failure:(void (_Nullable ^)(NSURLSessionDataTask * _Nonnull, NSError * _Nonnull))failure;
+                          success:(void (^)(NSURLSessionDataTask * _Nonnull, NSData * _Nonnull))success
+                          failure:(void (^)(NSURLSessionDataTask * _Nonnull, NSError * _Nonnull))failure;
 @end

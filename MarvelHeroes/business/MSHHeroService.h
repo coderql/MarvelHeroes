@@ -91,9 +91,13 @@ typedef void (^MSHResultHandler)(_Nullable id responseObject, NSError * _Nullabl
  */
 - (nonnull NSString *)getHeroThumbnailURL:(nonnull MSHThumbnail *)thumbnail;
 
-- (BOOL)favor:(int)heroId;
+- (void)favorHero:(int)heroId
+    resultHandler:(nullable MSHResultHandler)handler;
 
-- (BOOL)unfavor:(int)heroId;
+- (void)unfavorHero:(int)heroId
+      resultHandler:(nullable MSHResultHandler)handler;
 
-- (NSArray*)favoredHeros:(NSArray *)heroIds;
+- (void)favoredHeros:(NSArray * _Nonnull)heroIds
+       resultHandler:(nullable MSHResultHandler)handler;
+
 @end

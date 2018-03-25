@@ -10,17 +10,31 @@
 #import "MSHDBManager.h"
 
 @implementation MSHBaseHeroService
-- (BOOL)favor:(int)heroId {
-    return [[MSHDBManager manager] favorHero:heroId];
+
+- (void)favorHero:(int)heroId
+    resultHandler:(nullable MSHResultHandler)handler {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        BOOL result = [[MSHDBManager manager] favorHero:heroId];
+        if (handler)
+            handler([NSNumber numberWithBool:result], nil);
+    });
 }
 
-- (BOOL)unfavor:(int)heroId {
-    return [[MSHDBManager manager] unfavorHero:heroId];
+- (void)unfavorHero:(int)heroId
+      resultHandler:(nullable MSHResultHandler)handler {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
+        BOOL result = [[MSHDBManager manager] unfavorHero:heroId];
+        if (handler)
+            handler([NSNumber numberWithBool:result], nil);
+    });
 }
 
-
-- (NSArray*)favoredHeros:(NSArray *)heroIds {
-    return [[MSHDBManager manager] findFavoredHeroes:heroIds];
+- (void)favoredHeros:(NSArray * _Nonnull)heroIds
+       resultHandler:(nullable MSHResultHandler)handler {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^ {
+        if (handler)
+            handler([[MSHDBManager manager] findFavoredHeroes:heroIds], nil);
+    });
 }
 
 - (void)getHeroesOffset:(int)offset

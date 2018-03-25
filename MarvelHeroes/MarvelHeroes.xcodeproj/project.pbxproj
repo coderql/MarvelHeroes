@@ -25,11 +25,9 @@
 		B3EB062220633C91000F68AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3EB062120633C91000F68AE /* Assets.xcassets */; };
 		B3EB062520633C91000F68AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3EB062320633C91000F68AE /* LaunchScreen.storyboard */; };
 		B3EB062820633C91000F68AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB062720633C91000F68AE /* main.m */; };
-		B3EB063320633EEC000F68AE /* MSHHttpSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB063220633EEC000F68AE /* MSHHttpSessionManager.m */; };
 		B3EB063B20636834000F68AE /* MSHHero.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB063A20636834000F68AE /* MSHHero.m */; };
 		B3EB063E2063689E000F68AE /* MSHMarvelHeroService.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB063D2063689E000F68AE /* MSHMarvelHeroService.m */; };
 		B3EB06412063F323000F68AE /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB06402063F323000F68AE /* NSString+MD5.m */; };
-		B3EB06442064A932000F68AE /* MSHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB06432064A932000F68AE /* MSHModel.m */; };
 		B3EB06472064D330000F68AE /* MSHThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB06462064D330000F68AE /* MSHThumbnail.m */; };
 		B3EB064A2064D6B5000F68AE /* MSHPageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB06492064D6B5000F68AE /* MSHPageInfo.m */; };
 		B3EB064D2065E522000F68AE /* MSHEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB064C2065E522000F68AE /* MSHEntity.m */; };
@@ -41,6 +39,7 @@
 		B3EB066320668145000F68AE /* MSHImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB066220668145000F68AE /* MSHImageManager.m */; };
 		B3EB0666206788DE000F68AE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3EB0665206788DE000F68AE /* libsqlite3.dylib */; };
 		B3EB066A2067893C000F68AE /* MSHDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB06692067893C000F68AE /* MSHDBManager.m */; };
+		B3EB066D2067F7C0000F68AE /* MSHHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB066B2067F7BF000F68AE /* MSHHttpManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,8 +80,6 @@
 		B3EB062420633C91000F68AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3EB062620633C91000F68AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3EB062720633C91000F68AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B3EB063120633EEC000F68AE /* MSHHttpSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHHttpSessionManager.h; sourceTree = "<group>"; };
-		B3EB063220633EEC000F68AE /* MSHHttpSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHHttpSessionManager.m; sourceTree = "<group>"; };
 		B3EB0635206367E5000F68AE /* MSHHeroService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHHeroService.h; sourceTree = "<group>"; };
 		B3EB063920636834000F68AE /* MSHHero.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHHero.h; sourceTree = "<group>"; };
 		B3EB063A20636834000F68AE /* MSHHero.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHHero.m; sourceTree = "<group>"; };
@@ -90,8 +87,6 @@
 		B3EB063D2063689E000F68AE /* MSHMarvelHeroService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHMarvelHeroService.m; sourceTree = "<group>"; };
 		B3EB063F2063F323000F68AE /* NSString+MD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		B3EB06402063F323000F68AE /* NSString+MD5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
-		B3EB06422064A932000F68AE /* MSHModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHModel.h; sourceTree = "<group>"; };
-		B3EB06432064A932000F68AE /* MSHModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHModel.m; sourceTree = "<group>"; };
 		B3EB06452064D330000F68AE /* MSHThumbnail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHThumbnail.h; sourceTree = "<group>"; };
 		B3EB06462064D330000F68AE /* MSHThumbnail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHThumbnail.m; sourceTree = "<group>"; };
 		B3EB06482064D6B5000F68AE /* MSHPageInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHPageInfo.h; sourceTree = "<group>"; };
@@ -113,6 +108,8 @@
 		B3EB0665206788DE000F68AE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
 		B3EB06682067893C000F68AE /* MSHDBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSHDBManager.h; sourceTree = "<group>"; };
 		B3EB06692067893C000F68AE /* MSHDBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSHDBManager.m; sourceTree = "<group>"; };
+		B3EB066B2067F7BF000F68AE /* MSHHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSHHttpManager.m; sourceTree = "<group>"; };
+		B3EB066C2067F7C0000F68AE /* MSHHttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSHHttpManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,8 +218,8 @@
 		B3EB063020633EBD000F68AE /* network */ = {
 			isa = PBXGroup;
 			children = (
-				B3EB063120633EEC000F68AE /* MSHHttpSessionManager.h */,
-				B3EB063220633EEC000F68AE /* MSHHttpSessionManager.m */,
+				B3EB066C2067F7C0000F68AE /* MSHHttpManager.h */,
+				B3EB066B2067F7BF000F68AE /* MSHHttpManager.m */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -244,8 +241,6 @@
 			children = (
 				B3EB063920636834000F68AE /* MSHHero.h */,
 				B3EB063A20636834000F68AE /* MSHHero.m */,
-				B3EB06422064A932000F68AE /* MSHModel.h */,
-				B3EB06432064A932000F68AE /* MSHModel.m */,
 				B3EB06452064D330000F68AE /* MSHThumbnail.h */,
 				B3EB06462064D330000F68AE /* MSHThumbnail.m */,
 				B3EB06482064D6B5000F68AE /* MSHPageInfo.h */,
@@ -366,7 +361,6 @@
 				B3EB061D20633C91000F68AE /* ViewController.m in Sources */,
 				B3EB06502065E8EB000F68AE /* MSHBaseHeroService.m in Sources */,
 				7851C3112066B523006C6655 /* MSHSearchView.m in Sources */,
-				B3EB063320633EEC000F68AE /* MSHHttpSessionManager.m in Sources */,
 				B3EB062820633C91000F68AE /* main.m in Sources */,
 				B3EB06602066799F000F68AE /* UIImageView+MSHCache.m in Sources */,
 				B3EB0657206611C5000F68AE /* MSHImageDownloadOperation.m in Sources */,
@@ -374,6 +368,7 @@
 				7851C2ED2065FE56006C6655 /* MSHCollectionViewCell.m in Sources */,
 				B3EB063B20636834000F68AE /* MSHHero.m in Sources */,
 				B3EB06472064D330000F68AE /* MSHThumbnail.m in Sources */,
+				B3EB066D2067F7C0000F68AE /* MSHHttpManager.m in Sources */,
 				7851C304206643F4006C6655 /* MSHUtils.m in Sources */,
 				7851C30720668ACD006C6655 /* MSHLoadingView.m in Sources */,
 				B3EB064D2065E522000F68AE /* MSHEntity.m in Sources */,
@@ -383,7 +378,6 @@
 				B3EB063E2063689E000F68AE /* MSHMarvelHeroService.m in Sources */,
 				B3EB066A2067893C000F68AE /* MSHDBManager.m in Sources */,
 				7851C31B2067C8DA006C6655 /* MSHNavigationBar.m in Sources */,
-				B3EB06442064A932000F68AE /* MSHModel.m in Sources */,
 				B3EB065D20662AD2000F68AE /* MSHImageDownloadManager.m in Sources */,
 				7851C3182067B1B9006C6655 /* MSHTransition.m in Sources */,
 				B3EB06542065FB7F000F68AE /* MSHImageCache.m in Sources */,

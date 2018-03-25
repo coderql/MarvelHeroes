@@ -1,18 +1,18 @@
 //
-//  MSHHttpSessionManager.m
+//  MSHHttpManager.m
 //  MarvelHeroes
 //
 //  Created by Leo on 2018/3/22.
 //  Copyright © 2018年 leo. All rights reserved.
 //
 
-#import "MSHHttpSessionManager.h"
+#import "MSHHttpManager.h"
 
-@interface MSHHttpSessionManager ()
+@interface MSHHttpManager ()
 @property (readwrite, nonatomic, strong, nullable) NSURL *baseURL;
 @end
 
-@implementation MSHHttpSessionManager
+@implementation MSHHttpManager
 + (nonnull instancetype)manager {
     static dispatch_once_t once;
     static id instance;
