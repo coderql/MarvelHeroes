@@ -117,7 +117,7 @@ static CGFloat const kCellBottomAreaHeight = 53.f;
     if (self.searchView.searchTextField.isEditing) {
         [self.searchView endSearching];
     }
-//    NSLog(@"scrollViewWillBeginDragging");
+//    MSHLog(@"scrollViewWillBeginDragging");
     if (scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height) {
         if (self.searchView.searchActive) {
             if (!self.noMoreSearchData) {

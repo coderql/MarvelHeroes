@@ -116,7 +116,7 @@ static NSString *const kEntitySeries = @"series";
 }
 
 - (void)getComicsFailure:(NSError *)error {
-    NSLog(@"%@: %@", NSStringFromSelector(_cmd), error);
+    MSHLog(@"%@: %@", NSStringFromSelector(_cmd), error);
 }
 
 - (void)getEventsSuccess:(NSArray *)events {
@@ -125,7 +125,7 @@ static NSString *const kEntitySeries = @"series";
 }
 
 - (void)getEventsFailure:(NSError *)error {
-    NSLog(@"%@: %@", NSStringFromSelector(_cmd), error);
+    MSHLog(@"%@: %@", NSStringFromSelector(_cmd), error);
 }
 
 - (void)getStoriesSuccess:(NSArray *)stories {
@@ -134,7 +134,7 @@ static NSString *const kEntitySeries = @"series";
 }
 
 - (void)getStoriesFailure:(NSError *)error {
-    NSLog(@"%@: %@", NSStringFromSelector(_cmd), error);
+    MSHLog(@"%@: %@", NSStringFromSelector(_cmd), error);
 }
 
 - (void)getSeriesSuccess:(NSArray *)series {
@@ -143,7 +143,7 @@ static NSString *const kEntitySeries = @"series";
 }
 
 - (void)getSeriesFailure:(NSError *)error {
-    NSLog(@"%@: %@", NSStringFromSelector(_cmd), error);
+    MSHLog(@"%@: %@", NSStringFromSelector(_cmd), error);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -190,7 +190,7 @@ static NSString *const kEntitySeries = @"series";
 }
 
 - (void)dealloc {
-    NSLog(@"%@ dealloc", NSStringFromClass([self class]));
+    MSHLog(@"%@ dealloc", NSStringFromClass([self class]));
 }
 
 @end

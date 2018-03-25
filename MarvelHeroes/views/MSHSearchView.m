@@ -94,7 +94,7 @@ static CGFloat const kTextFieldHeight = 34.f;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSLog(@"should triggle search");
+    MSHLog(@"should triggle search");
     [self updateTextFieldWithEditingState:NO];
     if (![MSHUtils isEmptyString:textField.text]) {
         if (self.searchDelegate && [self.searchDelegate respondsToSelector:@selector(searchView:didEndEditing:)]) {
